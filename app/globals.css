@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-700 to-primary-800 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary-700 border-2 border-primary-700 px-6 py-3 rounded-full font-semibold hover:bg-primary-50 transition-all duration-300;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-white rounded-xl shadow-md p-6 transition-all duration-300 hover:shadow-xl;
+  }
+
+  /* Section Padding */
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Heading Styles */
+  .heading-primary {
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-tight;
+  }
+
+  .heading-secondary {
+    @apply text-3xl md:text-4xl font-serif font-bold text-gray-900;
+  }
+
+  .heading-tertiary {
+    @apply text-2xl md:text-3xl font-serif font-bold text-gray-900;
+  }
+
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-700 to-primary-900 bg-clip-text text-transparent;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  /* Islamic Pattern Overlay */
+  .pattern-overlay {
+    @apply relative;
+  }
+
+  .pattern-overlay::before {
+    content: '';
+    @apply absolute inset-0 bg-islamic-pattern opacity-5 pointer-events-none;
+  }
+}
+
+@layer utilities {
+  /* Line Clamp */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary-300 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-400;
+  }
+}
+
+/* Rich Text Editor Styles */
+.ql-container {
+  @apply border-gray-300 rounded-b-lg;
+  min-height: 300px;
+}
+
+.ql-toolbar {
+  @apply border-gray-300 rounded-t-lg bg-gray-50;
+}
+
+/* Article Content Styles */
+.article-content {
+  @apply prose prose-lg max-w-none;
+}
+
+.article-content h1 {
+  @apply text-3xl font-serif font-bold mt-8 mb-4;
+}
+
+.article-content h2 {
+  @apply text-2xl font-serif font-bold mt-6 mb-3;
+}
+
+.article-content h3 {
+  @apply text-xl font-serif font-bold mt-4 mb-2;
+}
+
+.article-content p {
+  @apply mb-4 leading-relaxed;
+}
+
+.article-content ul,
+.article-content ol {
+  @apply mb-4 ml-6;
+}
+
+.article-content li {
+  @apply mb-2;
+}
+
+.article-content a {
+  @apply text-primary-700 hover:text-primary-900 underline;
+}
+
+.article-content img {
+  @apply rounded-lg my-6;
+}
+
+.article-content blockquote {
+  @apply border-l-4 border-primary-700 pl-4 italic my-4;
+}
