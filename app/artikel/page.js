@@ -39,7 +39,7 @@ export default async function ArtikelPage({ searchParams }) {
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-white">
         <div className="container-custom text-center">
           <h1 className="heading-primary mb-4">
-            Artikel & <span className="text-gradient">Berita</span>
+            Artikel & <span className="text-gold-500">Berita</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Informasi terbaru tentang kegiatan dan program Hayrat Indonesia
@@ -58,8 +58,8 @@ export default async function ArtikelPage({ searchParams }) {
                 className={`px-6 py-2 rounded-full font-medium transition-all ${
                   (category === 'Semua' && !searchParams.category) ||
                   searchParams.category === category
-                    ? 'bg-primary-700 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gold-50 hover:text-gold-700'
                 }`}
               >
                 {category}
@@ -70,7 +70,7 @@ export default async function ArtikelPage({ searchParams }) {
       </section>
 
       {/* Articles Grid */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 border-t-4 border-gold-300">
         <div className="container-custom">
           {articles.length > 0 ? (
             <>

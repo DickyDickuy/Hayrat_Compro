@@ -45,16 +45,16 @@ export default async function ArticleDetailPage({ params }) {
         <div className="container-custom max-w-4xl">
           {/* Breadcrumb */}
           <div className="flex items-center space-x-2 text-sm text-gray-600 mb-6">
-            <Link href="/" className="hover:text-primary-700">Home</Link>
+            <Link href="/" className="hover:text-gold-600">Home</Link>
             <span>/</span>
-            <Link href="/artikel" className="hover:text-primary-700">Artikel</Link>
+            <Link href="/artikel" className="hover:text-gold-600">Artikel</Link>
             <span>/</span>
             <span className="text-gray-900">{article.title}</span>
           </div>
 
           {/* Category Badge */}
           <div className="mb-4">
-            <span className="bg-primary-700 text-white text-sm font-semibold px-4 py-1 rounded-full">
+            <span className="bg-gradient-to-r from-gold-500 to-gold-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg">
               {article.category}
             </span>
           </div>
@@ -67,15 +67,15 @@ export default async function ArticleDetailPage({ params }) {
           {/* Meta Information */}
           <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-8 pb-8 border-b">
             <div className="flex items-center space-x-2">
-              <FaUser className="text-primary-700" />
+              <FaUser className="text-gold-500" />
               <span>{article.author}</span>
             </div>
             <div className="flex items-center space-x-2">
-              <FaCalendar className="text-primary-700" />
+              <FaCalendar className="text-gold-500" />
               <span>{formatDate(article.createdAt)}</span>
             </div>
             <div className="flex items-center space-x-2">
-              <FaEye className="text-primary-700" />
+              <FaEye className="text-gold-500" />
               <span>{article.views} views</span>
             </div>
           </div>
@@ -102,11 +102,11 @@ export default async function ArticleDetailPage({ params }) {
           {/* Tags */}
           {article.tags && article.tags.length > 0 && (
             <div className="flex flex-wrap items-center gap-3 mt-8 pt-8 border-t">
-              <FaTag className="text-primary-700" />
+              <FaTag className="text-gold-500" />
               {article.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
+                  className="bg-gold-50 text-gold-700 border border-gold-200 px-3 py-1 rounded-full text-sm hover:bg-gold-100 transition-colors"
                 >
                   {tag}
                 </span>

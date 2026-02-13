@@ -80,7 +80,7 @@ export default function ProgramPage() {
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-white">
         <div className="container-custom text-center">
           <h1 className="heading-primary mb-4">
-            Program <span className="text-gradient">Kami</span>
+            Program <span className="text-gold-500">Kami</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Berbagai program yang dirancang untuk memberikan dampak positif 
@@ -90,7 +90,7 @@ export default function ProgramPage() {
       </section>
 
       {/* Programs Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white border-t-4 border-gold-300">
         <div className="container-custom">
           <div className="space-y-24">
             {programs.map((program, index) => {
@@ -124,7 +124,7 @@ export default function ProgramPage() {
                     <div className="space-y-3 mb-8">
                       {program.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center space-x-3">
-                          <div className="w-2 h-2 bg-primary-700 rounded-full"></div>
+                          <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
                           <span className="text-gray-700">{feature}</span>
                         </div>
                       ))}

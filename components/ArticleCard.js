@@ -24,7 +24,7 @@ export default function ArticleCard({ article }) {
 
   return (
     <Link href={`/artikel/${slug}`}>
-      <article className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+      <article className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-gold-300">
         {/* Image */}
         <div className="relative h-48 overflow-hidden bg-gray-200">
           <Image
@@ -35,7 +35,7 @@ export default function ArticleCard({ article }) {
           />
           {/* Category Badge */}
           <div className="absolute top-4 left-4">
-            <span className="bg-primary-700 text-white text-xs font-semibold px-3 py-1 rounded-full">
+            <span className="bg-gradient-to-r from-gold-500 to-gold-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
               {category}
             </span>
           </div>
@@ -44,7 +44,7 @@ export default function ArticleCard({ article }) {
         {/* Content */}
         <div className="p-6">
           {/* Title */}
-          <h3 className="text-xl font-serif font-bold text-gray-900 mb-2 group-hover:text-primary-700 transition-colors line-clamp-2">
+          <h3 className="text-xl font-serif font-bold text-gray-900 mb-2 group-hover:text-gold-600 transition-colors line-clamp-2">
             {title}
           </h3>
 

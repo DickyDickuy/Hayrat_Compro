@@ -49,7 +49,7 @@ export default function KontakPage() {
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-white">
         <div className="container-custom text-center">
           <h1 className="heading-primary mb-4">
-            Hubungi <span className="text-gradient">Kami</span>
+            Hubungi <span className="text-gold-500">Kami</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Kami siap membantu dan menjawab pertanyaan Anda
@@ -74,8 +74,8 @@ export default function KontakPage() {
               <div className="space-y-6">
                 {/* Address */}
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaMapMarkerAlt className="text-primary-700 text-xl" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-gold-400 to-gold-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <FaMapMarkerAlt className="text-white text-xl" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Alamat</h3>
@@ -89,8 +89,8 @@ export default function KontakPage() {
 
                 {/* Phone */}
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaPhone className="text-primary-700 text-xl" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-gold-400 to-gold-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <FaPhone className="text-white text-xl" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Telepon</h3>
@@ -103,8 +103,8 @@ export default function KontakPage() {
 
                 {/* Email */}
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaEnvelope className="text-primary-700 text-xl" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-gold-400 to-gold-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <FaEnvelope className="text-white text-xl" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
@@ -153,7 +153,7 @@ export default function KontakPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 transition-all"
                       required
                     />
                   </div>
@@ -168,7 +168,7 @@ export default function KontakPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 transition-all"
                       required
                     />
                   </div>
@@ -183,7 +183,7 @@ export default function KontakPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 transition-all"
                     />
                   </div>
 
@@ -197,7 +197,7 @@ export default function KontakPage() {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 transition-all"
                       required
                     />
                   </div>
@@ -212,7 +212,7 @@ export default function KontakPage() {
                       value={formData.message}
                       onChange={handleChange}
                       rows="5"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 transition-all"
                       required
                     />
                   </div>

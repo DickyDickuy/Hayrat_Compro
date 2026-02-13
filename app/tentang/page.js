@@ -12,7 +12,7 @@ export default function TentangPage() {
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-white">
         <div className="container-custom text-center">
           <h1 className="heading-primary mb-4">
-            Tentang <span className="text-gradient">Hayrat Indonesia</span>
+            Tentang <span className="text-gold-500">Hayrat Indonesia</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Yayasan dakwah dan kemanusiaan yang berkomitmen untuk menyebarkan nilai-nilai Islam 
@@ -26,7 +26,7 @@ export default function TentangPage() {
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Vision */}
-            <div className="card">
+            <div className="card border-2 border-gold-200 hover:border-gold-400 transition-colors">
               <div className="w-16 h-16 bg-gradient-to-br from-primary-700 to-primary-900 rounded-full flex items-center justify-center mb-6">
                 <FaEye className="text-white text-2xl" />
               </div>
@@ -41,7 +41,7 @@ export default function TentangPage() {
             </div>
 
             {/* Mission */}
-            <div className="card">
+            <div className="card border-2 border-gold-200 hover:border-gold-400 transition-colors">
               <div className="w-16 h-16 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center mb-6">
                 <FaBullseye className="text-white text-2xl" />
               </div>
@@ -50,19 +50,19 @@ export default function TentangPage() {
               </h2>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-primary-700 mr-2">•</span>
+                  <span className="text-gold-500 mr-2 text-xl">•</span>
                   <span>Menyebarkan dakwah Islam yang rahmatan lil 'alamin</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-700 mr-2">•</span>
+                  <span className="text-gold-500 mr-2 text-xl">•</span>
                   <span>Menyediakan akses pendidikan Islam dan umum berkualitas</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-700 mr-2">•</span>
+                  <span className="text-gold-500 mr-2 text-xl">•</span>
                   <span>Memberikan bantuan kesehatan dan kemanusiaan kepada masyarakat</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary-700 mr-2">•</span>
+                  <span className="text-gold-500 mr-2 text-xl">•</span>
                   <span>Memberdayakan ekonomi umat melalui pelatihan dan pendampingan</span>
                 </li>
               </ul>
@@ -72,7 +72,7 @@ export default function TentangPage() {
       </section>
 
       {/* History Section */}
-      <section className="section-padding bg-gray-50 pattern-overlay">
+      <section className="section-padding bg-gray-50 pattern-overlay border-t-4 border-gold-400">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -80,7 +80,7 @@ export default function TentangPage() {
                 <FaHistory className="text-white text-2xl" />
               </div>
               <h2 className="heading-secondary mb-6">
-                Sejarah <span className="text-gradient">Hayrat Indonesia</span>
+                Sejarah <span className="text-gold-500">Hayrat Indonesia</span>
               </h2>
               <div className="space-y-4 text-gray-700">
                 <p className="leading-relaxed">
@@ -115,11 +115,11 @@ export default function TentangPage() {
       </section>
 
       {/* Values Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white border-t-4 border-gold-300">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="heading-secondary mb-4">
-              Nilai-Nilai <span className="text-gradient">Kami</span>
+              Nilai-Nilai <span className="text-gold-500">Kami</span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Prinsip yang menjadi fondasi dalam setiap program dan kegiatan kami
@@ -133,9 +133,9 @@ export default function TentangPage() {
               { title: 'Profesional', description: 'Bekerja dengan standar terbaik' },
               { title: 'Istiqomah', description: 'Konsisten dalam kebaikan' },
             ].map((value, index) => (
-              <div key={index} className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl font-bold text-primary-800">{index + 1}</span>
+              <div key={index} className="text-center group">
+                <div className="w-20 h-20 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                  <span className="text-3xl font-bold text-white">{index + 1}</span>
                 </div>
                 <h3 className="text-xl font-serif font-bold text-gray-900 mb-2">
                   {value.title}

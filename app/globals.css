@@ -22,6 +22,10 @@
     @apply bg-white text-primary-700 border-2 border-primary-700 px-6 py-3 rounded-full font-semibold hover:bg-primary-50 transition-all duration-300;
   }
 
+  .btn-gold {
+    @apply bg-gradient-to-r from-gold-500 to-gold-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:from-gold-600 hover:to-gold-700 transition-all duration-300;
+  }
+
   /* Card Styles */
   .card {
     @apply bg-white rounded-xl shadow-md p-6 transition-all duration-300 hover:shadow-xl;
@@ -39,11 +43,21 @@
 
   /* Heading Styles */
   .heading-primary {
-    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-tight;
+    @apply text-4xl md:text-5xl font-serif font-bold text-gray-900 relative inline-block;
+  }
+
+  .heading-primary::after {
+    content: '';
+    @apply absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full;
   }
 
   .heading-secondary {
-    @apply text-3xl md:text-4xl font-serif font-bold text-gray-900;
+    @apply text-2xl md:text-3xl font-serif font-bold text-gray-900 relative inline-block;
+  }
+
+  .heading-secondary::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-16 h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full;
   }
 
   .heading-tertiary {
@@ -52,7 +66,7 @@
 
   /* Text Gradient */
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-700 to-primary-900 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-gold-500 to-gold-700 bg-clip-text text-transparent;
   }
 
   /* Glassmorphism */
@@ -147,7 +161,7 @@
 }
 
 .article-content a {
-  @apply text-primary-700 hover:text-primary-900 underline;
+  @apply text-gold-600 hover:text-gold-800 underline;
 }
 
 .article-content img {

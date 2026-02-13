@@ -54,7 +54,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-primary-700 transition-colors font-medium"
+                className="text-gray-700 hover:text-gold-600 transition-colors font-medium"
               >
                 {link.name}
               </Link>
@@ -73,7 +73,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-gray-700 hover:text-primary-700 transition-colors"
+            className="md:hidden text-gray-700 hover:text-gold-600 transition-colors"
           >
             {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
@@ -87,7 +87,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-gray-700 hover:text-primary-700 transition-colors font-medium px-2"
+                  className="text-gray-700 hover:text-gold-600 transition-colors font-medium px-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
