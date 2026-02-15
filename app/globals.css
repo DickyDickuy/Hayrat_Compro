@@ -33,7 +33,7 @@
 
   /* Section Padding */
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-16 md:py-10;
   }
 
   /* Container */
@@ -170,4 +170,48 @@
 
 .article-content blockquote {
   @apply border-l-4 border-primary-700 pl-4 italic my-4;
+}
+
+/* Embla Carousel Styles */
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
 }

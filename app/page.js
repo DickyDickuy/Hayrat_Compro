@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ArticleCard from '@/components/ArticleCard';
+import HeroCarousel from '@/components/HeroCarousel';
+import ActivityGallery from '@/components/ActivityGallery';
 import { FaHeart, FaHandHoldingHeart, FaUsers, FaGraduationCap, FaMicrophone, FaBookOpen, FaVideo } from 'react-icons/fa';
 
 async function getLatestArticles() {
@@ -24,51 +26,38 @@ export default async function HomePage() {
   const { articles } = await getLatestArticles();
 
   const impactStats = [
-    { icon: FaUsers, value: '10,000+', label: 'Penerima Manfaat' },
-    { icon: FaGraduationCap, value: '50+', label: 'Program Pendidikan' },
-    { icon: FaHandHoldingHeart, value: '100+', label: 'Mitra Organisasi' },
-    { icon: FaHeart, value: 'Rp 5M+', label: 'Dana Tersalurkan' },
+    { 
+      icon: FaUsers, 
+      value: '10,000+', 
+      label: 'Penerima Manfaat',
+      description: 'Telah membantu ribuan individu dan keluarga melalui berbagai program pemberdayaan dan bantuan.'
+    },
+    { 
+      icon: FaGraduationCap, 
+      value: '50+', 
+      label: 'Program Pendidikan',
+      description: 'Program pendidikan Islam dan umum yang tersebar di berbagai wilayah untuk mencerdaskan umat.'
+    },
+    { 
+      icon: FaHandHoldingHeart, 
+      value: '100+', 
+      label: 'Mitra Organisasi',
+      description: 'Berkolaborasi dengan berbagai organisasi untuk memperluas jangkauan dan dampak positif.'
+    },
+    { 
+      icon: FaHeart, 
+      value: 'Rp 5M+', 
+      label: 'Dana Tersalurkan',
+      description: 'Dana yang telah disalurkan untuk berbagai program dakwah dan kemanusiaan secara transparan.'
+    },
   ];
 
   return (
     <>
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative pt-20 min-h-screen grid md:grid-cols-2">
-        {/* Left side - Image */}
-        <div className="relative h-full min-h-[400px] md:min-h-screen">
-          <Image
-            src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920"
-            alt="Hero Background"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        {/* Right side - Content */}
-        <div className="bg-gradient-to-br from-primary-800 to-primary-900 flex items-center px-8 lg:px-16 py-16">
-          <div className="max-w-xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-              Dakwah & Kemanusiaan<br />
-              <span className="text-gold-400">Rahmatan Lil 'Alamin</span>
-            </h1>
-            <p className="text-lg md:text-xl mb-8 text-gray-200 leading-relaxed">
-              Bersama menyebarkan nilai-nilai Islam dan membangun masa depan yang lebih baik melalui program-program dakwah dan kemanusiaan yang berkelanjutan.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/dukung-kami" className="btn-gold inline-flex items-center justify-center space-x-2">
-                <FaHeart />
-                <span>Dukung Kami</span>
-              </Link>
-              <Link href="/tentang" className="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white/20 transition-all duration-300 inline-flex items-center justify-center">
-                Pelajari Lebih Lanjut
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Carousel */}
+      <HeroCarousel />
 
       {/* Impact Stats Section */}
       <section className="section-padding bg-white">
@@ -77,14 +66,29 @@ export default async function HomePage() {
             {impactStats.map((stat, index) => {
               const Icon = stat.icon;
               return (
-                <div key={index} className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full mb-4 shadow-lg">
-                    <Icon className="text-white text-2xl" />
+                <div key={index} className="group relative text-center p-6 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-gray-50">
+                  {/* Main Stat Content */}
+                  <div className="relative z-10">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="text-white text-2xl" />
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-bold text-primary-800 mb-2 group-hover:text-gold-600 transition-colors duration-300">
+                      {stat.value}
+                    </h3>
+                    <p className="text-gray-600 font-medium">{stat.label}</p>
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-primary-800 mb-2">
-                    {stat.value}
-                  </h3>
-                  <p className="text-gray-600">{stat.label}</p>
+                  
+                  {/* Hidden Description Card - Appears on Hover */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto z-20">
+                    <div className="bg-white rounded-xl shadow-2xl p-6 border-2 border-gold-400 max-w-xs">
+                      <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full mb-3">
+                        <Icon className="text-white text-xl" />
+                      </div>
+                      <h4 className="text-xl font-bold text-primary-800 mb-2">{stat.label}</h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">{stat.description}</p>
+                      <div className="mt-3 text-2xl font-bold text-gold-600">{stat.value}</div>
+                    </div>
+                  </div>
                 </div>
               );
             })}
@@ -92,65 +96,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Programs Section */}
-      <section className="section-padding bg-gray-50">\n        <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Large card - Pendidikan */}
-            <Link href="/program" className="relative h-96 md:row-span-2 rounded-2xl overflow-hidden group cursor-pointer">
-              <Image
-                src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800"
-                alt="Pendidikan"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                <h3 className="text-3xl md:text-4xl font-serif font-bold mb-3 text-gold-400">PENDIDIKAN</h3>
-                <p className="text-gray-200 mb-4 leading-relaxed">Hayrat Indonesia berkomitmen untuk menyediakan untuk menyebarkan Islam rahmatan lil 'alamin melalui pendidikan dan pemberdayaan...</p>
-                <div className="flex items-center space-x-2 text-gold-400">
-                  <span className="text-sm font-semibold">→</span>
-                </div>
-              </div>
-            </Link>
-
-            {/* Small card - Kesehatan */}
-            <Link href="/program" className="relative h-48 md:h-auto rounded-2xl overflow-hidden group cursor-pointer">
-              <Image
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600"
-                alt="Kesehatan"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2 text-gold-400">KESEHATAN</h3>
-                <p className="text-sm text-gray-200 mb-3 leading-relaxed">Hayrat Indonesia berkomitmen untuk menyediakan pemahaman menyebar sokolion bersama disital dan kesehatan.</p>
-                <div className="flex items-center space-x-2 text-gold-400">
-                  <span className="text-sm font-semibold">→</span>
-                </div>
-              </div>
-            </Link>
-
-            {/* Small card - Pemberdayaan Ekonomi */}
-            <Link href="/program" className="relative h-48 md:h-auto rounded-2xl overflow-hidden group cursor-pointer">
-              <Image
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600"
-                alt="Pemberdayaan Ekonomi"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2 text-gold-400">PEMBERDAYAAN EKONOMI</h3>
-                <p className="text-sm text-gray-200 mb-3 leading-relaxed">Pemberdayaan ekonomi proyek, peninbutan untuk bermelnenan sepempe sken membudayaan ekonomi.</p>
-                <div className="flex items-center space-x-2 text-gold-400">
-                  <span className="text-sm font-semibold">→</span>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Activity Gallery Section */}
+      <ActivityGallery />
 
       {/* Latest Articles Section */}
       {articles.length > 0 && (
