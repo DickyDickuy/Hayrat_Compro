@@ -3,9 +3,26 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import connectDB from '@/lib/mongodb';
 import Admin from '@/models/Admin';
+import { rateLimits, getClientIdentifier } from '@/lib/rateLimit';
 
 export async function POST(request) {
   try {
+    // Rate limiting for login attempts
+    const identifier = getClientIdentifier(request);
+    const rateCheck = rateLimits.login.check(identifier);
+    
+    if (rateCheck.limited) {
+      return NextResponse.json(
+        { message: 'Too many login attempts. Please try again later.' },
+        { 
+          status: 429,
+          headers: {
+            'X-RateLimit-Reset': rateCheck.resetTime.toString(),
+          }
+        }
+      );
+    }
+
     await connectDB();
 
     const { email, password } = await request.json();

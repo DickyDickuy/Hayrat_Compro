@@ -1,15 +1,33 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Article from '@/models/Article';
+import { rateLimits, getClientIdentifier } from '@/lib/rateLimit';
 
 // GET all articles
 export async function GET(request) {
   try {
+    // Rate limiting
+    const identifier = getClientIdentifier(request);
+    const rateCheck = rateLimits.articles.check(identifier);
+    
+    if (rateCheck.limited) {
+      return NextResponse.json(
+        { message: 'Too many requests. Please try again later.' },
+        { 
+          status: 429,
+          headers: {
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': rateCheck.resetTime.toString(),
+          }
+        }
+      );
+    }
+
     await connectDB();
 
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '10');
+    const limit = Math.min(parseInt(searchParams.get('limit') || '10'), 50); // Max 50 items
     const category = searchParams.get('category');
     const published = searchParams.get('published');
 
@@ -39,6 +57,10 @@ export async function GET(request) {
         total,
         pages: Math.ceil(total / limit),
       },
+    }, {
+      headers: {
+        'X-RateLimit-Remaining': rateCheck.remaining.toString(),
+      }
     });
 
   } catch (error) {
@@ -53,6 +75,17 @@ export async function GET(request) {
 // POST create new article
 export async function POST(request) {
   try {
+    // Rate limiting
+    const identifier = getClientIdentifier(request);
+    const rateCheck = rateLimits.createArticle.check(identifier);
+    
+    if (rateCheck.limited) {
+      return NextResponse.json(
+        { message: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     await connectDB();
 
     const data = await request.json();

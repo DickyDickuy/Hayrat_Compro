@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ArticleCard from '@/components/ArticleCard';
 import HeroCarousel from '@/components/HeroCarousel';
 import ActivityGallery from '@/components/ActivityGallery';
 import { FaHeart, FaHandHoldingHeart, FaUsers, FaGraduationCap, FaMicrophone, FaBookOpen, FaVideo } from 'react-icons/fa';
@@ -24,6 +23,20 @@ async function getLatestArticles() {
 
 export default async function HomePage() {
   const { articles } = await getLatestArticles();
+
+  // Category badge colors
+  const getCategoryColor = (category) => {
+    const colors = {
+      'Bantuan Kemanusiaan': 'bg-blue-600',
+      'Pendidikan': 'bg-blue-600',
+      'Kesehatan': 'bg-blue-600',
+      'Program': 'bg-green-600',
+      'Kegiatan': 'bg-purple-600',
+      'Berita': 'bg-blue-600',
+      'Opini': 'bg-orange-600',
+    };
+    return colors[category] || 'bg-blue-600';
+  };
 
   const impactStats = [
     { 
@@ -99,28 +112,66 @@ export default async function HomePage() {
       {/* Activity Gallery Section */}
       <ActivityGallery />
 
-      {/* Latest Articles Section */}
+      {/* Latest News Section */}
       {articles.length > 0 && (
         <section className="section-padding bg-gray-50">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className="heading-secondary mb-4">
-                Artikel <span className="text-gradient">Terbaru</span>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-4">
+                Berita <span className="text-gradient">Terbaru</span>
               </h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Berita dan informasi terkini tentang kegiatan kami
+                Tetap terupdate dengan kegiatan, acara, dan dampak terbaru kami.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {articles.map((article) => (
-                <ArticleCard key={article._id} article={article} />
+                <div key={article._id} className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={article.coverImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800'}
+                      alt={article.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className={`absolute top-4 left-4 ${getCategoryColor(article.category)} text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide`}>
+                      {article.category}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">
+                      <div className="flex items-center space-x-1">
+                        <span>📅</span>
+                        <span>{new Date(article.createdAt).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <span>👤</span>
+                        <span>{article.author}</span>
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-bold text-primary-800 mb-3 group-hover:text-gold-600 transition-colors duration-300">
+                      {article.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 line-clamp-3">
+                      {article.excerpt}
+                    </p>
+                    <Link 
+                      href={`/artikel/${article.slug}`}
+                      className="inline-flex items-center text-primary-700 font-semibold hover:text-gold-600 transition-colors duration-300"
+                    >
+                      Baca Selengkapnya
+                      <span className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+                    </Link>
+                  </div>
+                </div>
               ))}
             </div>
 
             <div className="text-center mt-12">
-              <Link href="/artikel" className="btn-primary inline-block">
-                Lihat Semua Artikel
+              <Link href="/artikel" className="group inline-flex items-center space-x-2 bg-white hover:bg-gray-50 text-primary-700 border-2 border-primary-700 hover:border-gold-600 hover:text-gold-600 px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                <span>Lihat Semua Berita</span>
+                <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
               </Link>
             </div>
           </div>

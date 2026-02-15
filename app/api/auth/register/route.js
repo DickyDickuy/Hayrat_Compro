@@ -2,11 +2,23 @@ import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import connectDB from '@/lib/mongodb';
 import Admin from '@/models/Admin';
+import { rateLimits, getClientIdentifier } from '@/lib/rateLimit';
 
 // This route is for creating the first admin user
-// You should disable this in production or add additional security
+// IMPORTANT: Disable this route in production for security
 export async function POST(request) {
   try {
+    // Rate limiting for registration
+    const identifier = getClientIdentifier(request);
+    const rateCheck = rateLimits.register.check(identifier);
+    
+    if (rateCheck.limited) {
+      return NextResponse.json(
+        { message: 'Too many registration attempts. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     await connectDB();
 
     const { name, email, password, role } = await request.json();

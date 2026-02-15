@@ -1,103 +1,122 @@
 # Hayrat Indonesia - Company Profile Website
 
-A modern, comprehensive Company Profile website for Hayrat Indonesia (Muslim foundation/NGO) built with Next.js, MongoDB, and Tailwind CSS.
+A modern, full-stack website for Hayrat Indonesia (Muslim foundation/NGO) built with Next.js 14, MongoDB, and Tailwind CSS. Features include a public-facing website and a complete admin CMS for content management.
 
-## 🚀 Features
+## ✨ Features
 
-### Public Facing
-- **Modern UI/UX**: Islamic minimalism design with clean typography and subtle patterns
-- **Responsive Design**: Mobile-first approach using Tailwind CSS
-- **Home Page**: Hero section, impact counters, featured articles, and CTAs
-- **About Page**: Vision, Mission, and History
-- **Programs Page**: Display foundation programs
-- **Articles/Blog**: Grid layout with pagination and category filters
-- **Article Detail**: Full article view with social sharing
+### 🌐 Public Website
+- **Modern Islamic Design**: Clean, minimalist design with Islamic patterns and gold accents
+- **Responsive Layout**: Mobile-first design optimized for all devices
+- **Dynamic Content**: Articles and programs fetched from MongoDB
+- **Activity Gallery**: Showcase foundation programs with image modals
+- **SEO Optimized**: Server-side rendering with Next.js App Router
 
-### Admin Dashboard (CMS)
-- **Protected Routes**: JWT-based authentication with React Context API
-- **Article Management**: Full CRUD operations for articles
-- **Rich Text Editor**: ReactQuill for content creation
-- **Dashboard**: Stats overview and quick actions
-- **User Management**: Admin authentication system
+### 🔐 Admin Dashboard (CMS)
+- **Secure Authentication**: JWT-based login with rate limiting
+- **Article Management**: Create, read, update, and delete articles
+- **Rich Text Editor**: ReactQuill for formatted content creation
+- **Protected Routes**: Auth-based access control
+- **Dashboard Analytics**: View statistics and recent activity
+
+### 🚀 Performance & Security
+- **API Rate Limiting**: Prevents abuse with configurable limits
+- **Database Indexes**: Optimized queries for fast performance
+- **Image Optimization**: Next.js Image component with lazy loading
+- **Error Handling**: Comprehensive error management
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS
-- **Database**: MongoDB with Mongoose ODM
-- **Authentication**: JWT with bcryptjs
-- **State Management**: React Context API (AuthContext)
-- **Rich Text Editor**: React Quill
-- **Icons**: React Icons
+| Category | Technology |
+|----------|-----------|
+| **Frontend** | Next.js 14, React 18, Tailwind CSS |
+| **Backend** | Next.js API Routes, MongoDB, Mongoose |
+| **Auth** | JWT, bcryptjs |
+| **Editor** | React Quill |
+| **Icons** | React Icons |
+| **Carousel** | Embla Carousel |
 
-## 📋 Prerequisites
+## 📋 Quick Start
 
-- Node.js 18+ 
-- MongoDB (local or MongoDB Atlas)
-- npm or yarn
+### Prerequisites
+- Node.js 18 or higher
+- MongoDB (local or Atlas)
+- npm or yarn package manager
 
-## 🔧 Installation
+### Installation
 
-1. **Install Dependencies**
+1. **Clone & Install**
 ```bash
+git clone <repository-url>
+cd Hayrat_Compro
 npm install
 ```
 
-2. **Environment Variables**
+2. **Environment Setup**
 
-Update `.env.local` with your actual values:
+Create `.env.local` in the root directory:
 ```env
+# MongoDB Connection (choose one)
 MONGODB_URI=mongodb://localhost:27017/hayrat_indonesia
-# Or use MongoDB Atlas:
+# OR for MongoDB Atlas:
 # MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/hayrat_indonesia
 
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+# JWT Secret (generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))")
+JWT_SECRET=your-super-secret-jwt-key-32-characters-minimum
+
+# API URL
 NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
 
-3. **Create First Admin User**
-
-Run this script to create your first admin user:
+3. **Database Setup**
 ```bash
+# Create admin user
 node scripts/createAdmin.js
+
+# (Optional) Seed sample articles
+node scripts/seedArticles.js
 ```
 
-Or use the register API endpoint:
-```bash
-curl -X POST http://localhost:3000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Admin",
-    "email": "admin@hayrat.id",
-    "password": "admin123",
-    "role": "superadmin"
-  }'
-```
-
-4. **Run Development Server**
+4. **Start Development Server**
 ```bash
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the website.
+Visit **http://localhost:3000** to see your website! 🎉
+
+### Default Admin Credentials
+- **Email**: `admin@hayrat.id`
+- **Password**: `admin123`
+- **Admin Panel**: http://localhost:3000/admin/login
+
+⚠️ **Important**: Change these credentials in production!
 
 ## 📁 Project Structure
 
 ```
 hayrat-compro/
-├── app/
-│   ├── admin/
-│   │   ├── artikel/
-│   │   │   ├── create/
-│   │   │   │   └── page.js
-│   │   │   └── page.js
-│   │   ├── login/
-│   │   │   └── page.js
-│   │   ├── layout.js
-│   │   └── page.js
-│   ├── artikel/
-│   │   ├── [slug]/
-│   │   │   └── page.js
+├── app/                      # Next.js App Router
+│   ├── admin/               # Admin dashboard pages
+│   │   ├── artikel/        # Article management
+│   │   └── login/          # Admin login
+│   ├── api/                # API routes
+│   │   ├── articles/       # Article CRUD APIs
+│   │   └── auth/           # Authentication APIs
+│   ├── artikel/            # Public article pages
+│   ├── kontak/             # Contact page
+│   ├── program/            # Programs page
+│   ├── tentang/            # About page
+│   ├── globals.css         # Global styles
+│   ├── layout.js           # Root layout
+│   └── page.js             # Homepage
+├── components/              # React components
+│   ├── ActivityGallery.js  # Program showcase
+│   ├── AdminSidebar.js     # Admin navigation
+│   ├── ArticleCard.js      # Article preview card
+│   ├── Footer.js           # Site footer
+│   ├── HeroCarousel.js     # Homepage carousel
+│   ├── Navbar.js           # Site navigation
+│   └── ProtectedRoute.js   # Auth wrapper
+├── context/
 │   │   └── page.js
 │   ├── api/
 │   │   ├── articles/
@@ -187,7 +206,7 @@ npm start
 ### Environment Variables for Production
 Make sure to update:
 - `MONGODB_URI` - Your production MongoDB URI
-- `JWT_SECRET` - Strong secret key
+- `JWT_SECRET` - Strong secret key (min 32 chars)
 - `NEXT_PUBLIC_API_URL` - Your production domain
 
 ### Recommended Platforms
@@ -196,27 +215,75 @@ Make sure to update:
 - **Railway**
 - **DigitalOcean**
 
-## 📦 Database Seeds
+## 🔒 Security Features
 
-To populate with sample data, you can create articles via the admin dashboard at `/admin/artikel/create`.
+### Built-in Protection
+- ✅ **API Rate Limiting** on all endpoints
+- ✅ **JWT Authentication** with secure token handling
+- ✅ **Password Hashing** using bcryptjs
+- ✅ **Protected Routes** for admin areas
+- ✅ **Input Validation** on API routes
+- ✅ **MongoDB Indexes** for query optimization
 
-## 🔒 Security Notes
+### Rate Limits
+- Articles API: 100 requests/minute
+- Login: 5 attempts/15 minutes
+- Registration: 3 attempts/hour
+- Article Mutations: 10-20 requests/minute
 
-1. **Change JWT_SECRET** in production to a strong random string
-2. **Disable** `/api/auth/register` route in production (or add additional security)
-3. **Enable HTTPS** in production
-4. **Use strong passwords** for admin accounts
-5. **Implement rate limiting** on API routes
-6. **Add CORS** configuration if needed
+### Production Checklist
+1. ⚠️ **Change default admin credentials**
+2. ⚠️ **Disable `/api/auth/register`** route in production
+3. ✅ Use strong JWT_SECRET (minimum 32 characters)
+4. ✅ Enable HTTPS
+5. ✅ Configure MongoDB Atlas IP whitelist
+6. ✅ Set up proper CORS policies
+
+## 📝 Content Management
+
+### Adding Articles
+See [ARTICLE_SEEDING_GUIDE.md](ARTICLE_SEEDING_GUIDE.md) for detailed instructions.
+
+**Quick Steps:**
+1. Login at `/admin/login`
+2. Go to "Artikel" → "Buat Artikel Baru"
+3. Fill in article details
+4. Click "Publikasikan Artikel"
+
+### Available Categories
+- Bantuan Kemanusiaan, Pendidikan, Kesehatan
+- Program, Kegiatan, Berita, Opini
+
+## 🐛 Troubleshooting
+
+**MongoDB Connection Issues**
+- Verify MongoDB is running (local) or connection string (Atlas)
+- Check `.env.local` has correct MONGODB_URI
+
+**Admin Login Not Working**
+- Run `node scripts/createAdmin.js` to create admin
+- Clear browser localStorage
+- Verify JWT_SECRET is set
+
+**Articles Not Showing**
+- Run `node scripts/seedArticles.js` for sample data
+- Ensure articles have `published: true`
+- Check `/api/articles` returns data
+
+**Rate Limit Reached**
+- Wait for reset time (shown in error message)
+- Restart dev server to clear in-memory limits
+
+## 📚 Documentation
+
+- **[ARTICLE_SEEDING_GUIDE.md](ARTICLE_SEEDING_GUIDE.md)** - Article management guide
+- **[package.json](package.json)** - Dependencies and scripts
+- **[tailwind.config.js](tailwind.config.js)** - Styling configuration
 
 ## 📄 License
 
 Private - All rights reserved by Hayrat Indonesia
 
-## 👥 Credits
+---
 
-Developed as a company profile website for Hayrat Indonesia foundation.
-
-## 📞 Support
-
-For issues or questions, please contact the development team.
+**Built with ❤️ using Next.js 14, MongoDB, and Tailwind CSS**

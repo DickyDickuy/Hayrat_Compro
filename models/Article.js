@@ -33,7 +33,7 @@ const ArticleSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Berita', 'Program', 'Kegiatan', 'Opini'],
+    enum: ['Berita', 'Program', 'Kegiatan', 'Opini', 'Bantuan Kemanusiaan', 'Pendidikan', 'Kesehatan'],
     default: 'Berita',
   },
   tags: [{
@@ -43,6 +43,7 @@ const ArticleSchema = new mongoose.Schema({
   published: {
     type: Boolean,
     default: true,
+    index: true, // Index for filtering published articles
   },
   views: {
     type: Number,
@@ -51,12 +52,19 @@ const ArticleSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+    index: true, // Index for sorting by date
   },
   updatedAt: {
     type: Date,
     default: Date.now,
   },
 });
+
+// Indexes for better query performance
+ArticleSchema.index({ slug: 1 }); // Already unique, but explicit index
+ArticleSchema.index({ category: 1, published: 1, createdAt: -1 }); // Compound index for filtering
+ArticleSchema.index({ published: 1, createdAt: -1 }); // Index for latest published articles
+ArticleSchema.index({ title: 'text', excerpt: 'text', content: 'text' }); // Text search index
 
 // Update the updatedAt field on save
 ArticleSchema.pre('save', function(next) {

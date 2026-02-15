@@ -1,10 +1,22 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Article from '@/models/Article';
+import { rateLimits, getClientIdentifier } from '@/lib/rateLimit';
 
 // GET single article by slug
 export async function GET(request, { params }) {
   try {
+    // Rate limiting
+    const identifier = getClientIdentifier(request);
+    const rateCheck = rateLimits.articles.check(identifier);
+    
+    if (rateCheck.limited) {
+      return NextResponse.json(
+        { message: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     await connectDB();
 
     const { slug } = params;
@@ -39,6 +51,17 @@ export async function GET(request, { params }) {
 // PUT update article
 export async function PUT(request, { params }) {
   try {
+    // Rate limiting
+    const identifier = getClientIdentifier(request);
+    const rateCheck = rateLimits.updateArticle.check(identifier);
+    
+    if (rateCheck.limited) {
+      return NextResponse.json(
+        { message: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     await connectDB();
 
     const { slug } = params;
@@ -80,6 +103,17 @@ export async function PUT(request, { params }) {
 // DELETE article
 export async function DELETE(request, { params }) {
   try {
+    // Rate limiting
+    const identifier = getClientIdentifier(request);
+    const rateCheck = rateLimits.updateArticle.check(identifier);
+    
+    if (rateCheck.limited) {
+      return NextResponse.json(
+        { message: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     await connectDB();
 
     const { slug } = params;
