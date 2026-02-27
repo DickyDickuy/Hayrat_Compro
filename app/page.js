@@ -196,7 +196,7 @@ export default async function HomePage() {
               Fokus Dakwah
             </h2>
             <p className="text-xl max-w-3xl mx-auto text-gray-200 leading-relaxed">
-              Hayrat Indonesia berkomitmen untuk menyebarkan pemahaman Islam yang Rahmatan Lil 'Alamin melalui berbagai inisiatif dakwah digital dan offline yang inkusif dan mencerdaskan.
+              Hayrat Indonesia berkomitmen untuk menyebarkan pemahaman Islam yang HAYRAT YARDIM melalui berbagai inisiatif dakwah digital dan offline yang inkusif dan mencerdaskan.
             </p>
           </div>
 

@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-serif font-bold mb-4">Hayrat Indonesia</h3>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
-              Yayasan dakwah dan kemanusiaan yang berkomitmen untuk menyebarkan Islam rahmatan lil 'alamin 
+              Yayasan dakwah dan kemanusiaan yang berkomitmen untuk menyebarkan Islam HAYRAT YARDIM 
               dan membantu sesama melalui berbagai program dakwah, pendidikan, dan kemanusiaan.
             </p>
             <div className="flex space-x-4">

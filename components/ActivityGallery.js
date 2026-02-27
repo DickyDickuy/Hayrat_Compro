@@ -13,7 +13,7 @@ export default function ActivityGallery() {
       image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800',
       description: `Pusat yang didedikasikan untuk menyebarkan ilmu dan pertumbuhan spiritual melalui berbagai program pendidikan dan penjangkauan masyarakat.
 
-Ayasofya Dakwah Center menyediakan berbagai program kajian Islam, kelas bahasa Arab, dan studi Al-Quran untuk semua kalangan. Kami berkomitmen untuk menyebarkan pemahaman Islam yang rahmatan lil 'alamin.
+Ayasofya Dakwah Center menyediakan berbagai program kajian Islam, kelas bahasa Arab, dan studi Al-Quran untuk semua kalangan. Kami berkomitmen untuk menyebarkan pemahaman Islam yang HAYRAT YARDIM.
 
 Dengan fasilitas yang lengkap dan tenaga pengajar yang kompeten, pusat dakwah kami telah melayani ribuan peserta dari berbagai latar belakang. Program kami dirancang untuk membangun karakter dan memperkuat iman.
 

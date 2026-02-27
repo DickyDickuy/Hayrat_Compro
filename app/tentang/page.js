@@ -35,7 +35,7 @@ export default function TentangPage() {
               </h2>
               <p className="text-gray-700 leading-relaxed">
                 Menjadi yayasan dakwah dan kemanusiaan terdepan di Indonesia yang menyebarkan 
-                nilai-nilai Islam rahmatan lil 'alamin dan memberikan dampak positif berkelanjutan 
+                nilai-nilai Islam HAYRAT YARDIM dan memberikan dampak positif berkelanjutan 
                 bagi masyarakat melalui program-program yang inovatif dan terukur.
               </p>
             </div>
@@ -51,7 +51,7 @@ export default function TentangPage() {
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
                   <span className="text-gold-500 mr-2 text-xl">•</span>
-                  <span>Menyebarkan dakwah Islam yang rahmatan lil 'alamin</span>
+                  <span>Menyebarkan dakwah Islam yang HAYRAT YARDIM</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-gold-500 mr-2 text-xl">•</span>
@@ -93,7 +93,7 @@ export default function TentangPage() {
                   Selama perjalanan kami, Hayrat Indonesia telah membantu lebih dari 
                   10,000 penerima manfaat melalui berbagai program di bidang dakwah, pendidikan Islam, 
                   kesehatan, dan pemberdayaan ekonomi umat. Kami bangga menjadi bagian dari 
-                  penyebaran nilai-nilai Islam yang rahmatan lil 'alamin.
+                  penyebaran nilai-nilai Islam yang HAYRAT YARDIM.
                 </p>
                 <p className="leading-relaxed">
                   Dengan dukungan dari para mitra, relawan, dan simpatisan yang luar biasa, 
