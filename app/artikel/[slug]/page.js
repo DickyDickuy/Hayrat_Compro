@@ -5,13 +5,25 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FaCalendar, FaUser, FaTag, FaEye } from 'react-icons/fa';
 
+function getApiBaseUrl() {
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
+  return 'http://localhost:3000';
+}
+
 async function getArticle(slug) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/articles/${slug}`,
+      `${getApiBaseUrl()}/api/articles/${slug}`,
       { cache: 'no-store' }
     );
-    
+
     if (!res.ok) return null;
     const data = await res.json();
     return data.article;

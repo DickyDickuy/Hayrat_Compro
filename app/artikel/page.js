@@ -2,11 +2,23 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ArticleCard from '@/components/ArticleCard';
 
+function getApiBaseUrl() {
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
+  return 'http://localhost:3000';
+}
+
 async function getArticles(searchParams) {
   try {
     const page = searchParams.page || '1';
     const category = searchParams.category || '';
-    
+
     const queryParams = new URLSearchParams({
       page,
       limit: '9',
@@ -15,10 +27,10 @@ async function getArticles(searchParams) {
     });
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/articles?${queryParams}`,
+      `${getApiBaseUrl()}/api/articles?${queryParams}`,
       { cache: 'no-store' }
     );
-    
+
     if (!res.ok) return { articles: [], pagination: {} };
     return await res.json();
   } catch (error) {
