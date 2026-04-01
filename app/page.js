@@ -8,7 +8,14 @@ import { FaHeart, FaHandHoldingHeart, FaUsers, FaGraduationCap, FaMicrophone, Fa
 
 async function getLatestArticles() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/articles?limit=3&published=true`, {
+    // Tentukan URL: Prioritaskan NEXT_PUBLIC_API_URL, lalu VERCEL_URL, lalu fallback ke localhost
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL 
+      ? process.env.NEXT_PUBLIC_API_URL
+      : process.env.VERCEL_URL 
+        ? `https://${process.env.VERCEL_URL}` 
+        : 'http://localhost:3000';
+
+    const res = await fetch(`${baseUrl}/api/articles?limit=3&published=true`, {
       cache: 'no-store',
     });
     
