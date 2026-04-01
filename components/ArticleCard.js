@@ -14,6 +14,19 @@ export default function ArticleCard({ article }) {
     createdAt,
   } = article;
 
+  const resolveImage = (src) => {
+    if (!src) return '/images/default-article.jpg';
+    try {
+      const url = new URL(src);
+      if (url.protocol === 'http:' || url.protocol === 'https:') {
+        return src;
+      }
+      return '/images/default-article.jpg';
+    } catch {
+      return '/images/default-article.jpg';
+    }
+  };
+
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString('id-ID', {
       year: 'numeric',
@@ -28,7 +41,7 @@ export default function ArticleCard({ article }) {
         {/* Image */}
         <div className="relative h-48 overflow-hidden bg-gray-200">
           <Image
-            src={coverImage || '/images/default-article.jpg'}
+            src={resolveImage(coverImage)}
             alt={title}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-300"

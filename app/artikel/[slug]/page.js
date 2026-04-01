@@ -17,6 +17,19 @@ function getApiBaseUrl() {
   return 'http://localhost:3000';
 }
 
+function resolveImage(src) {
+  if (!src) return '/images/default-article.jpg';
+  try {
+    const url = new URL(src);
+    if (url.protocol === 'http:' || url.protocol === 'https:') {
+      return src;
+    }
+    return '/images/default-article.jpg';
+  } catch {
+    return '/images/default-article.jpg';
+  }
+}
+
 async function getArticle(slug) {
   try {
     const res = await fetch(
@@ -96,7 +109,7 @@ export default async function ArticleDetailPage({ params }) {
           {article.coverImage && (
             <div className="relative h-96 rounded-2xl overflow-hidden mb-8">
               <Image
-                src={article.coverImage}
+                src={resolveImage(article.coverImage)}
                 alt={article.title}
                 fill
                 className="object-cover"

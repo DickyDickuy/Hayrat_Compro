@@ -28,6 +28,19 @@ async function getLatestArticles() {
   }
 }
 
+function resolveImage(src) {
+  if (!src) return 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800';
+  try {
+    const url = new URL(src);
+    if (url.protocol === 'http:' || url.protocol === 'https:') {
+      return src;
+    }
+    return 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800';
+  } catch {
+    return 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800';
+  }
+}
+
 export default async function HomePage() {
   const { articles } = await getLatestArticles();
 
@@ -137,7 +150,7 @@ export default async function HomePage() {
                 <div key={article._id} className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                   <div className="relative h-64 overflow-hidden">
                     <Image
-                      src={article.coverImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800'}
+                      src={resolveImage(article.coverImage)}
                       alt={article.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
