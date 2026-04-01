@@ -29,15 +29,26 @@ async function getLatestArticles() {
 }
 
 function resolveImage(src) {
-  if (!src) return 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800';
+  const fallback = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800';
+  if (!src) return fallback;
+
+  const allowedHosts = new Set([
+    'localhost',
+    'images.unsplash.com',
+  ]);
+  const allowedSuffixes = ['.vercel-storage.com'];
+
   try {
     const url = new URL(src);
-    if (url.protocol === 'http:' || url.protocol === 'https:') {
-      return src;
-    }
-    return 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800';
+    const isAllowed =
+      (url.protocol === 'http:' || url.protocol === 'https:') &&
+      (allowedHosts.has(url.hostname) ||
+        allowedSuffixes.some((suffix) => url.hostname.endsWith(suffix)));
+
+    if (isAllowed) return src;
+    return fallback;
   } catch {
-    return 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800';
+    return fallback;
   }
 }
 

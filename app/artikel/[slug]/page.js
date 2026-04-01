@@ -19,11 +19,21 @@ function getApiBaseUrl() {
 
 function resolveImage(src) {
   if (!src) return '/images/default-article.jpg';
+
+  const allowedHosts = new Set([
+    'localhost',
+    'images.unsplash.com',
+  ]);
+  const allowedSuffixes = ['.vercel-storage.com'];
+
   try {
     const url = new URL(src);
-    if (url.protocol === 'http:' || url.protocol === 'https:') {
-      return src;
-    }
+    const isAllowed =
+      (url.protocol === 'http:' || url.protocol === 'https:') &&
+      (allowedHosts.has(url.hostname) ||
+        allowedSuffixes.some((suffix) => url.hostname.endsWith(suffix)));
+
+    if (isAllowed) return src;
     return '/images/default-article.jpg';
   } catch {
     return '/images/default-article.jpg';
