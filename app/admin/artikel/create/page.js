@@ -12,6 +12,9 @@ export default function CreateArtikelPage() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
+  const [uploadingCover, setUploadingCover] = useState(false);
+  const [uploadMessage, setUploadMessage] = useState('');
+  const [coverPreview, setCoverPreview] = useState('');
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
@@ -44,6 +47,36 @@ export default function CreateArtikelPage() {
 
   const handleContentChange = (value) => {
     setFormData((prev) => ({ ...prev, content: value }));
+  };
+
+  const handleCoverUpload = async (file) => {
+    if (!file) return;
+    setUploadingCover(true);
+    setUploadMessage('');
+    setCoverPreview(URL.createObjectURL(file));
+
+    const data = new FormData();
+    data.append('file', file);
+
+    try {
+      const res = await fetch('/api/uploads', {
+        method: 'POST',
+        body: data,
+      });
+
+      const result = await res.json();
+
+      if (!res.ok || !result.url) {
+        throw new Error(result.message || 'Gagal mengunggah gambar');
+      }
+
+      setFormData((prev) => ({ ...prev, coverImage: result.url }));
+      setUploadMessage('Gambar berhasil diunggah dan sudah terisi otomatis.');
+    } catch (error) {
+      setUploadMessage(error.message || 'Upload gagal. Coba lagi.');
+    } finally {
+      setUploadingCover(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -153,17 +186,67 @@ export default function CreateArtikelPage() {
               />
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor="coverImage" className="text-sm font-medium text-gray-700">URL Cover Image</label>
-              <input
-                id="coverImage"
-                name="coverImage"
-                type="url"
-                value={formData.coverImage}
-                onChange={handleChange}
-                className="input input-bordered w-full"
-                placeholder="https://example.com/image.jpg"
-              />
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-sm font-medium text-gray-700">Cover Image</label>
+                {formData.coverImage ? (
+                  <span className="text-xs text-green-600">Tersimpan</span>
+                ) : null}
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-3">
+                  <div className="p-4 rounded-xl border bg-gray-50 space-y-3">
+                    <div>
+                      <p className="text-sm font-semibold text-gray-800">Upload gambar (disarankan)</p>
+                      <p className="text-xs text-gray-500">Format JPG/PNG, maksimal 5MB. Setelah diupload, URL otomatis terisi.</p>
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handleCoverUpload(e.target.files?.[0])}
+                      className="file-input file-input-bordered w-full"
+                    />
+                    {uploadMessage ? (
+                      <p className={`text-xs ${uploadMessage.includes('berhasil') ? 'text-green-600' : 'text-red-600'}`}>
+                        {uploadMessage}
+                      </p>
+                    ) : null}
+                    {uploadingCover ? (
+                      <p className="text-xs text-primary-600">Mengunggah...</p>
+                    ) : null}
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="coverImage" className="text-sm font-medium text-gray-700">Atau tempel URL manual</label>
+                    <input
+                      id="coverImage"
+                      name="coverImage"
+                      type="url"
+                      value={formData.coverImage}
+                      onChange={handleChange}
+                      className="input input-bordered w-full"
+                      placeholder="https://example.com/image.jpg"
+                    />
+                    <p className="text-xs text-gray-500">Kolom ini akan terisi otomatis setelah upload berhasil.</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-gray-700">Pratinjau</p>
+                  <div className="h-52 w-full rounded-xl border bg-gray-100 overflow-hidden flex items-center justify-center">
+                    {coverPreview || formData.coverImage ? (
+                      <img
+                        src={coverPreview || formData.coverImage}
+                        alt="Preview cover"
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-sm text-gray-400">Belum ada gambar</span>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
