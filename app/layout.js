@@ -1,4 +1,4 @@
-import { Inter, Lora } from 'next/font/google';
+import { Inter, Montserrat } from 'next/font/google';
 import { AuthProvider } from '@/context/AuthContext';
 import './globals.css';
 
@@ -8,9 +8,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-const lora = Lora({
+const montserrat = Montserrat({
   subsets: ['latin'],
-  variable: '--font-lora',
+  variable: '--font-montserrat',
   display: 'swap',
 });
 
@@ -22,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${inter.variable} ${lora.variable}`}>
+    <html lang="id" className={`${inter.variable} ${montserrat.variable}`}>
       <body className={inter.className}>
         <AuthProvider>
           {children}

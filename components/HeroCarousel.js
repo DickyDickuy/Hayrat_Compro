@@ -80,8 +80,8 @@ export default function HeroCarousel() {
       <div className="bg-gradient-to-br from-primary-800 to-primary-900 flex items-center px-8 lg:px-16 py-12">
         <div className="max-w-xl">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-4 leading-tight">
-            Dakwah & Kemanusiaan<br />
-            <span className="text-gold-400">HAYRAT YARDIM</span>
+            Pendidikan dan Dakwah<br />
+            <span className="text-gold-400">HAYRAT FOUNDATION</span>
           </h1>
           <p className="text-base md:text-lg mb-6 text-gray-200 leading-relaxed">
             Bersama menyebarkan nilai-nilai Islam dan membangun masa depan yang lebih baik melalui program-program dakwah dan kemanusiaan yang berkelanjutan.

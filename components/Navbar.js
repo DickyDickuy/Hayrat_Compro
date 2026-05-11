@@ -30,8 +30,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md'
-          : 'bg-white/80 backdrop-blur-sm'
+          ? 'bg-primary-900 shadow-xl'
+          : 'bg-primary-900/95 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,7 +39,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/images/hayrat-logo.png"
+              src="/images/LOGO hayrat.png"
               alt="Hayrat Indonesia"
               width={180}
               height={60}
@@ -54,7 +54,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-gold-600 transition-colors font-medium"
+                className="text-gray-100 hover:text-white transition-colors font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 hover:after:w-full after:transition-all after:duration-300 tracking-wide"
               >
                 {link.name}
               </Link>
@@ -63,7 +63,7 @@ export default function Navbar() {
             {/* Support Button */}
             <Link
               href="/dukung-kami"
-              className="flex items-center space-x-2 bg-gradient-to-r from-primary-700 to-primary-800 text-white px-6 py-2.5 rounded-full hover:shadow-lg transition-all duration-300 font-semibold"
+              className="flex items-center space-x-2 bg-gold-500 text-white px-6 py-2.5 rounded-md hover:bg-gold-600 hover:shadow-lg transition-all duration-300 font-semibold"
             >
               <FaHeart className="text-sm" />
               <span>Dukung Kami</span>
@@ -73,7 +73,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-gray-700 hover:text-gold-600 transition-colors"
+            className="md:hidden text-white hover:text-gold-400 transition-colors"
           >
             {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
@@ -81,13 +81,13 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t border-primary-800">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-gray-700 hover:text-gold-600 transition-colors font-medium px-2"
+                  className="text-gray-200 hover:text-white transition-colors font-medium px-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
@@ -96,7 +96,7 @@ export default function Navbar() {
               
               <Link
                 href="/dukung-kami"
-                className="flex items-center justify-center space-x-2 bg-gradient-to-r from-primary-700 to-primary-800 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-semibold"
+                className="flex items-center justify-center space-x-2 bg-gold-500 text-white px-6 py-3 rounded-md hover:bg-gold-600 hover:shadow-lg transition-all duration-300 font-semibold mt-2"
                 onClick={() => setIsOpen(false)}
               >
                 <FaHeart className="text-sm" />

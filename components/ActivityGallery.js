@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { FaTimes, FaSearchPlus, FaCalendar } from 'react-icons/fa';
+import { FaTimes, FaCalendar, FaArrowRight } from 'react-icons/fa';
 
 export default function ActivityGallery() {
   const activities = [
@@ -52,71 +52,63 @@ Pusat ini merupakan simbol komitmen kami untuk terus melayani masyarakat dan mem
   return (
     <>
       {/* Main Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-cream-50">
         <div className="container-custom">
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 md:mb-10 gap-4">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6 border-b border-gray-200 pb-6">
             <div>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-2">
-                Kegiatan <span className="text-gradient">Kami</span>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-4">
+                Kegiatan Kami
               </h2>
-              <p className="text-gray-600">Berdedikasi untuk melayani masyarakat melalui pendidikan, dukungan sosial, dan inisiatif kemanusiaan.</p>
+              <div className="w-16 h-1 bg-gold-500 mb-4"></div>
+              <p className="text-gray-600 max-w-2xl text-lg">Berdedikasi untuk melayani masyarakat melalui pendidikan, dukungan sosial, dan inisiatif kemanusiaan.</p>
             </div>
-            <button className="group flex items-center space-x-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+            <button className="inline-flex items-center space-x-3 bg-white text-primary-900 border-2 border-primary-900 hover:bg-primary-900 hover:text-white px-8 py-3 font-bold uppercase tracking-wider text-sm transition-all duration-300 whitespace-nowrap">
               <span>Pelajari Lebih Lanjut</span>
-              <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+              <FaArrowRight />
             </button>
           </div>
 
-          {/* Grid of Thumbnails */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          {/* Grid of Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {activities.map((activity) => (
               <div
                 key={activity.id}
                 onClick={() => setSelectedItem(activity)}
-                className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                className="group cursor-pointer flex flex-col bg-white border border-gray-200 hover:border-gold-500 transition-all duration-300 h-full"
               >
-                {/* Image */}
-                <Image
-                  src={activity.image}
-                  alt={activity.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                
-                {/* Date Badge - Top Left */}
-                <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-md z-10 flex items-center space-x-1">
-                  <FaCalendar className="text-gold-600 text-xs" />
-                  <span className="text-xs font-semibold text-gray-800">
-                    {new Date(activity.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                  </span>
+                {/* Image Area */}
+                <div className="relative aspect-[4/3] overflow-hidden bg-primary-900">
+                  <Image
+                    src={activity.image}
+                    alt={activity.title}
+                    fill
+                    className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  />
+                  
+                  {/* Date Badge - Solid Corporate Style */}
+                  <div className="absolute top-0 right-0 bg-gold-500 text-white px-4 py-2 flex items-center space-x-2">
+                    <FaCalendar className="text-white text-xs" />
+                    <span className="text-xs font-bold uppercase tracking-wider">
+                      {new Date(activity.date).toLocaleDateString('id-ID', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Hover Overlay with Call-to-Action */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-4">
-                  {/* Icon */}
-                  <div className="mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                    <div className="w-12 h-12 bg-gold-500 rounded-full flex items-center justify-center shadow-lg">
-                      <FaSearchPlus className="text-white text-xl" />
-                    </div>
-                  </div>
-                  
-                  {/* Text */}
-                  <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
-                    <h4 className="text-white font-bold text-sm md:text-base mb-1 line-clamp-2">
+                {/* Content Area */}
+                <div className="p-8 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-serif font-bold text-primary-900 mb-4 group-hover:text-gold-500 transition-colors">
                       {activity.title}
-                    </h4>
-                    <p className="text-gold-400 font-semibold text-xs md:text-sm">
-                      Pelajari Lebih Lanjut →
+                    </h3>
+                    <p className="text-gray-600 line-clamp-3 text-sm leading-relaxed mb-6">
+                      {activity.description.split('\n')[0]}
                     </p>
                   </div>
-                </div>
-
-                {/* Bottom Gradient (always visible for title) */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-white text-xs font-medium line-clamp-1">
-                    {activity.title}
-                  </p>
+                  <div className="mt-auto flex items-center text-primary-900 font-bold uppercase tracking-wider text-xs group-hover:text-gold-500 transition-colors">
+                    <span className="mr-2">Selengkapnya</span>
+                    <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -124,109 +116,66 @@ Pusat ini merupakan simbol komitmen kami untuk terus melayani masyarakat dan mem
         </div>
       </section>
 
-      {/* Instagram-Style Modal */}
+      {/* Corporate Modal */}
       {selectedItem && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-primary-900/95 p-4 md:p-10 animate-fadeIn"
           onClick={(e) => {
-            // Close modal when clicking backdrop
             if (e.target === e.currentTarget) setSelectedItem(null);
           }}
         >
-          {/* Close Button - Top Right */}
+          {/* Close Button */}
           <button
             onClick={() => setSelectedItem(null)}
-            className="fixed top-4 right-4 md:top-6 md:right-6 text-white hover:text-gold-400 transition-all duration-300 z-50 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm"
-            aria-label="Close modal"
+            className="absolute top-6 right-6 md:top-10 md:right-10 text-white hover:text-gold-500 transition-colors z-50 flex items-center space-x-2"
+            aria-label="Tutup"
           >
+            <span className="font-bold uppercase tracking-widest text-xs hidden md:block">Tutup</span>
             <FaTimes className="text-2xl" />
           </button>
 
           {/* Modal Container */}
-          <div className="relative max-w-6xl w-full h-[85vh] bg-white rounded-xl overflow-hidden shadow-2xl flex animate-scaleIn">
-            {/* Left Side - Image (60%) */}
-            <div className="w-full md:w-[60%] bg-gradient-to-br from-gray-900 to-black flex items-center justify-center p-4">
-              <div className="relative w-full h-full">
-                <Image
-                  src={selectedItem.image}
-                  alt={selectedItem.title}
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
+          <div className="relative w-full max-w-6xl max-h-[90vh] bg-white flex flex-col md:flex-row overflow-hidden shadow-2xl animate-scaleIn">
+            
+            {/* Left Side - Image */}
+            <div className="w-full md:w-1/2 relative bg-gray-100 min-h-[300px] md:min-h-full">
+              <Image
+                src={selectedItem.image}
+                alt={selectedItem.title}
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 border-8 border-white/20 hidden md:block"></div>
             </div>
 
-            {/* Right Side - Content (40%) */}
-            <div className="hidden md:flex md:w-[40%] flex-col bg-white">
+            {/* Right Side - Content */}
+            <div className="w-full md:w-1/2 flex flex-col bg-white h-full max-h-[60vh] md:max-h-[90vh]">
               {/* Header */}
-              <div className="flex items-center justify-between p-5 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
-                <div className="flex items-center space-x-3">
-                  <div className="w-11 h-11 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-white font-bold">H</span>
-                  </div>
-                  <div>
-                    <span className="font-bold text-gray-900 block">hayratfoundationina</span>
-                    <span className="text-xs text-gray-500">Hayrat Foundation</span>
-                  </div>
+              <div className="p-8 lg:p-12 border-b border-gray-100">
+                <div className="flex items-center space-x-2 text-gold-500 font-bold uppercase tracking-widest text-xs mb-4">
+                  <FaCalendar />
+                  <span>{new Date(selectedItem.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
+                <h3 className="font-serif font-bold text-3xl md:text-4xl text-primary-900 leading-tight">
+                  {selectedItem.title}
+                </h3>
               </div>
 
-              {/* Body - Scrollable */}
-              <div className="flex-1 overflow-y-auto p-6 custom-scrollbar">
-                <div className="mb-4">
-                  <h3 className="font-bold text-2xl text-primary-800 mb-3 leading-tight">
-                    {selectedItem.title}
-                  </h3>
-                  <div className="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <FaCalendar className="text-gold-600" />
-                    <span>{selectedItem.date}</span>
-                  </div>
+              {/* Body */}
+              <div className="flex-1 overflow-y-auto p-8 lg:p-12 custom-scrollbar">
+                <div className="prose prose-lg max-w-none text-gray-600">
+                  <p className="whitespace-pre-line leading-relaxed">
+                    {selectedItem.description}
+                  </p>
                 </div>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {selectedItem.description}
-                </p>
               </div>
 
               {/* Footer */}
-              <div className="p-5 border-t border-gray-200 bg-gradient-to-r from-gray-50 to-white">
-                <button className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white py-3 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                  Pelajari Lebih Lanjut
-                </button>
-              </div>
-            </div>
-
-            {/* Mobile - Full Screen Image with Close */}
-            <div className="md:hidden absolute inset-0 bg-gradient-to-br from-gray-900 to-black flex flex-col">
-              <div className="flex-1 relative p-4">
-                <Image
-                  src={selectedItem.image}
-                  alt={selectedItem.title}
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-              <div className="bg-white rounded-t-3xl p-6 max-h-[45vh] overflow-y-auto custom-scrollbar shadow-2xl">
-                <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-4"></div>
-                <div className="flex items-center space-x-2 mb-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">H</span>
-                  </div>
-                  <span className="font-semibold text-sm text-gray-900">hayratfoundationina</span>
-                </div>
-                <h3 className="font-bold text-xl text-primary-800 mb-2 leading-tight">
-                  {selectedItem.title}
-                </h3>
-                <div className="flex items-center space-x-2 text-xs text-gray-500 mb-3">
-                  <FaCalendar className="text-gold-600" />
-                  <span>{selectedItem.date}</span>
-                </div>
-                <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line mb-4">
-                  {selectedItem.description}
-                </p>
-                <button className="w-full bg-gradient-to-r from-gold-500 to-gold-600 text-white py-3 rounded-full font-semibold shadow-md">
-                  Pelajari Lebih Lanjut
+              <div className="p-8 lg:p-12 border-t border-gray-100 bg-gray-50">
+                <button className="w-full bg-primary-900 hover:bg-gold-500 text-white py-4 font-bold uppercase tracking-widest text-sm transition-colors duration-300 flex items-center justify-center space-x-3">
+                  <span>Pelajari Lebih Lanjut</span>
+                  <FaArrowRight />
                 </button>
               </div>
             </div>

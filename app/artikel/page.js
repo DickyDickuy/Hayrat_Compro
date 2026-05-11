@@ -48,30 +48,31 @@ export default async function ArtikelPage({ searchParams }) {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-white">
-        <div className="container-custom text-center">
-          <h1 className="heading-primary mb-4">
+      <section className="pt-40 pb-20 bg-primary-900 border-b-4 border-gold-500 relative">
+        <div className="container-custom text-center relative z-10">
+          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
             Artikel & <span className="text-gold-500">Berita</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Informasi terbaru tentang kegiatan dan program Hayrat Indonesia
+          <div className="w-24 h-1 bg-gold-500 mx-auto mb-6"></div>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Informasi terbaru, opini, dan laporan mendalam tentang kegiatan kemanusiaan dan dakwah Hayrat Indonesia.
           </p>
         </div>
       </section>
 
       {/* Category Filter */}
-      <section className="py-8 bg-white border-b">
+      <section className="py-8 bg-white border-b border-gray-200">
         <div className="container-custom">
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
               <a
                 key={category}
                 href={`/artikel${category !== 'Semua' ? `?category=${category}` : ''}`}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                className={`px-6 py-2.5 font-bold uppercase tracking-wide text-xs transition-colors border ${
                   (category === 'Semua' && !searchParams.category) ||
                   searchParams.category === category
-                    ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gold-50 hover:text-gold-700'
+                    ? 'bg-primary-900 border-primary-900 text-white'
+                    : 'bg-white border-gray-300 text-gray-600 hover:border-primary-900 hover:text-primary-900'
                 }`}
               >
                 {category}
@@ -82,7 +83,7 @@ export default async function ArtikelPage({ searchParams }) {
       </section>
 
       {/* Articles Grid */}
-      <section className="section-padding bg-gray-50 border-t-4 border-gold-300">
+      <section className="section-padding bg-cream-50">
         <div className="container-custom">
           {articles.length > 0 ? (
             <>
@@ -94,15 +95,15 @@ export default async function ArtikelPage({ searchParams }) {
 
               {/* Pagination */}
               {pagination.pages > 1 && (
-                <div className="flex justify-center gap-2 mt-12">
+                <div className="flex justify-center gap-2 mt-16 border-t border-gray-200 pt-8">
                   {Array.from({ length: pagination.pages }, (_, i) => i + 1).map((page) => (
                     <a
                       key={page}
                       href={`/artikel?page=${page}${searchParams.category ? `&category=${searchParams.category}` : ''}`}
-                      className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                      className={`w-12 h-12 flex items-center justify-center font-bold transition-colors border ${
                         page === pagination.page
-                          ? 'bg-primary-700 text-white'
-                          : 'bg-white text-gray-700 hover:bg-gray-100'
+                          ? 'bg-primary-900 border-primary-900 text-white'
+                          : 'bg-white border-gray-300 text-gray-600 hover:border-primary-900 hover:text-primary-900'
                       }`}
                     >
                       {page}
@@ -112,8 +113,9 @@ export default async function ArtikelPage({ searchParams }) {
               )}
             </>
           ) : (
-            <div className="text-center py-16">
-              <p className="text-xl text-gray-600">Belum ada artikel tersedia.</p>
+            <div className="text-center py-20 bg-white border border-gray-200">
+              <p className="text-xl text-gray-500 font-serif">Belum ada artikel tersedia dalam kategori ini.</p>
+              <div className="w-16 h-1 bg-gold-500 mx-auto mt-6"></div>
             </div>
           )}
         </div>
