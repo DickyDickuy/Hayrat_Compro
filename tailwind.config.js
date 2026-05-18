@@ -42,7 +42,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-montserrat)', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'serif'],
       },
       backgroundImage: {
         'islamic-pattern': "url('/patterns/islamic-pattern.svg')",

@@ -46,12 +46,11 @@ export default function KontakPage() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-40 pb-20 bg-primary-900 border-b-4 border-gold-500">
+      <section className="pt-40 pb-20 bg-primary-900">
         <div className="container-custom text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
+          <h1 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
             Hubungi <span className="text-gold-500">Kami</span>
           </h1>
-          <div className="w-24 h-1 bg-gold-500 mx-auto mb-6"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Kami siap melayani dan menjawab pertanyaan Anda. Jangan ragu untuk menghubungi kami untuk kolaborasi, donasi, atau informasi program.
           </p>
@@ -67,51 +66,60 @@ export default function KontakPage() {
               <h2 className="text-3xl font-serif font-bold text-primary-900 mb-6">
                 Informasi Kontak
               </h2>
-              <div className="w-12 h-1 bg-gold-500 mb-8"></div>
               <p className="text-gray-700 mb-10 leading-relaxed text-lg">
                 Kunjungi kantor kami atau hubungi kami melalui telepon dan email yang tersedia. Kami akan berusaha merespon secepat mungkin.
               </p>
 
               <div className="space-y-8">
-                {/* Address */}
+                {/* Address Pusat */}
                 <div className="flex items-start space-x-6">
                   <div className="w-14 h-14 bg-white border border-gray-200 flex items-center justify-center flex-shrink-0">
                     <FaMapMarkerAlt className="text-gold-500 text-2xl" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-primary-900 mb-2">Kantor Pusat</h3>
+                    <h3 className="text-xl font-bold text-primary-900 mb-2">Kantor Pusat Turki</h3>
+                    <p className="text-gray-600 leading-relaxed font-bold">Hayrat Foundation Isparta</p>
+                    <p className="text-gray-600 leading-relaxed mb-4">
+                      Gazi Kemal, Hüsrev Altınbaşak Sk. No:15, 32040 Isparta Merkez/Isparta, Türkiye<br />
+                      Telepon: +90 246 210 23 36
+                    </p>
+                    <p className="text-gray-600 leading-relaxed font-bold">Hayrat Foundation Istanbul/Küçükçekmece</p>
                     <p className="text-gray-600 leading-relaxed">
-                      Jl. Contoh No. 123<br />
-                      Jakarta Pusat, DKI Jakarta 10110<br />
-                      Indonesia
+                      Cumhuriyet, Aşık Veysel Cd. 72/A, 34290 Küçükçekmece/İstanbul, Türkiye<br />
+                      Telepon: 021 2624 2434
                     </p>
                   </div>
                 </div>
 
-                {/* Phone */}
-                <div className="flex items-start space-x-6">
-                  <div className="w-14 h-14 bg-white border border-gray-200 flex items-center justify-center flex-shrink-0">
-                    <FaPhone className="text-gold-500 text-2xl" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-primary-900 mb-2">Telepon</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      +62 21 1234 5678<br />
-                      +62 812 3456 7890
-                    </p>
-                  </div>
-                </div>
+                <div className="w-full h-px bg-gray-200 my-6"></div>
 
-                {/* Email */}
+                {/* Address Cabang */}
                 <div className="flex items-start space-x-6">
                   <div className="w-14 h-14 bg-white border border-gray-200 flex items-center justify-center flex-shrink-0">
-                    <FaEnvelope className="text-gold-500 text-2xl" />
+                    <FaMapMarkerAlt className="text-gold-500 text-2xl" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-primary-900 mb-2">Email Resmi</h3>
+                    <h3 className="text-xl font-bold text-primary-900 mb-2">Kantor Cabang Indonesia</h3>
+                    
+                    <p className="text-gray-600 leading-relaxed font-bold">Hayrat Foundation Indonesia | Yayasan Ayasofya Center Indonesia</p>
+                    <p className="text-gray-600 leading-relaxed mb-4">
+                      Jl. Paris Residence No.100 Blok L, Cemp. Putih, Kec. Ciputat Timur., Kota Tangerang Selatan, Banten 15412<br />
+                      Telepon: 021 2784 6453 | WhatsApp: +62 8138 7036 801<br />
+                      Email: info@ayasofya.or.id
+                    </p>
+
+                    <p className="text-gray-600 leading-relaxed font-bold">Ayasofya Dakwah Center</p>
+                    <p className="text-gray-600 leading-relaxed mb-4">
+                      Jl. Ir H. Juanda No.95, Ciputat, Kec. Ciputat Tim., Kota Tangerang Selatan, Banten 15412, Gedung Perpustakaan Lama, Lantai 3, UIN Syarif Hidayatullah Jakarta<br />
+                      WhatsApp: +62 821 9762 0361<br />
+                      Email: dakwahcenter@ayasofya.or.id
+                    </p>
+
+                    <p className="text-gray-600 leading-relaxed font-bold">Madrasah Hayrat Indonesia</p>
                     <p className="text-gray-600 leading-relaxed">
-                      info@hayratindonesia.org<br />
-                      program@hayratindonesia.org
+                      Komplek Graha Hijau 2, Blok F No. 30, Kel. Cempaka Putih, Kec. Ciputat Timur, Kota Tangerang Selatan, Banten<br />
+                      WhatsApp: +62 813 8703 6801<br />
+                      Email: student.dormitory@ayasofya.or.id
                     </p>
                   </div>
                 </div>
@@ -120,7 +128,7 @@ export default function KontakPage() {
 
             {/* Contact Form */}
             <div>
-              <div className="bg-white border-t-4 border-primary-900 p-8 lg:p-10 shadow-sm">
+              <div className="bg-white p-8 lg:p-12 shadow-sm border border-gray-100">
                 <h2 className="text-2xl font-serif font-bold text-primary-900 mb-8">
                   Kirim Pesan
                 </h2>
@@ -142,7 +150,7 @@ export default function KontakPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-sm"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-md"
                       required
                     />
                   </div>
@@ -158,7 +166,7 @@ export default function KontakPage() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-sm"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-md"
                         required
                       />
                     </div>
@@ -173,7 +181,7 @@ export default function KontakPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-sm"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-md"
                       />
                     </div>
                   </div>
@@ -188,7 +196,7 @@ export default function KontakPage() {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-sm"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-md"
                       required
                     />
                   </div>
@@ -203,7 +211,7 @@ export default function KontakPage() {
                       value={formData.message}
                       onChange={handleChange}
                       rows="5"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-sm"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-all rounded-md"
                       required
                     />
                   </div>
@@ -211,28 +219,16 @@ export default function KontakPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-primary-900 text-white px-6 py-4 font-bold hover:bg-gold-500 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3 rounded-sm"
+                    className="w-full bg-primary-900 text-white px-6 py-4 font-medium hover:bg-primary-800 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3 rounded-md"
                   >
                     <FaPaperPlane />
-                    <span>{loading ? 'MENGIRIM...' : 'KIRIM PESAN'}</span>
+                    <span>{loading ? 'Mengirim...' : 'Kirim Pesan'}</span>
                   </button>
                 </form>
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="h-96 w-full bg-gray-200">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253840.65833179387!2d106.68942998567033!3d-6.229386799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta!5e0!3m2!1sen!2sid!4v1644000000000!5m2!1sen!2sid"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
-        ></iframe>
       </section>
 
       <Footer />

@@ -75,10 +75,9 @@ export default function ProgramPage() {
       <section className="pt-40 pb-20 bg-primary-900 relative">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519818175027-2bc9f750b284?w=1920')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
         <div className="container-custom text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
+          <h1 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
             Program <span className="text-gold-500">Kami</span>
           </h1>
-          <div className="w-24 h-1 bg-gold-500 mx-auto mb-6"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Inisiatif strategis Hayrat Foundation Indonesia di bidang dakwah, pendidikan, dan kemanusiaan untuk memberdayakan umat dan menyebarkan nilai-nilai Islam rahmatan lil ‘alamin.
           </p>
@@ -106,14 +105,13 @@ export default function ProgramPage() {
                   </div>
 
                   {/* Content */}
-                  <div className="w-full md:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
-                    <div className="w-16 h-16 bg-primary-900 flex items-center justify-center mb-6">
-                      <Icon className="text-gold-500 text-3xl" />
+                  <div className="w-full md:w-1/2 p-6 md:p-10 lg:p-16 flex flex-col justify-center">
+                    <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mb-6">
+                      <Icon className="text-primary-700 text-xl" />
                     </div>
                     <h2 className="text-3xl font-serif font-bold text-primary-900 mb-4">
                       {program.title}
                     </h2>
-                    <div className="w-12 h-1 bg-gold-500 mb-6"></div>
                     <p className="text-gray-600 text-lg leading-relaxed mb-8">
                       {program.description}
                     </p>
@@ -143,8 +141,50 @@ export default function ProgramPage() {
         </div>
       </section>
 
+      {/* 8 Humanitarian Programs ACI */}
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-4">
+              8 Program Utama Kemanusiaan
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Melalui Ayasofya Center Indonesia (ACI), kami menjalankan berbagai program kemanusiaan dengan total lebih dari 45.029 Penerima Manfaat.
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
+              {[
+                { title: 'Ramadan Project', desc: 'Bantuan pangan, iftar, dan fidyah selama bulan suci Ramadan.', pm: 'Penerima Manfaat' },
+                { title: 'Orphan Project', desc: 'Pendidikan, pembinaan, dan santunan rutin untuk anak yatim.', pm: 'Penerima Manfaat' },
+                { title: 'Qurban Project', desc: 'Distribusi daging qurban ke pelosok Nusantara dan luar negeri.', pm: 'Penerima Manfaat' },
+                { title: 'Health Project', desc: 'Layanan kesehatan gratis, operasi katarak, dan bantuan medis.', pm: 'Penerima Manfaat' },
+                { title: 'Sustainable Project', desc: 'Program pemberdayaan ekonomi seperti Gerobak dan JEB.', pm: 'Penerima Manfaat' },
+                { title: 'Al Quran Project', desc: 'Distribusi Al-Quran dan buku Iqra ke masjid dan pelosok.', pm: 'Penerima Manfaat' },
+                { title: 'Water Project', desc: 'Pembangunan sumur air bersih di daerah kekeringan ekstrim.', pm: 'Penerima Manfaat' },
+                { title: 'Disaster Project', desc: 'Respons tanggap darurat bencana alam dan pemulihan pasca-bencana.', pm: 'Penerima Manfaat' }
+              ].map((prog, idx) => (
+                <div key={idx} className="flex items-start group">
+                  <div className="w-12 text-3xl font-serif font-bold text-gold-500 opacity-50 group-hover:opacity-100 transition-opacity mt-1">
+                    0{idx + 1}
+                  </div>
+                  <div className="flex-1 border-b border-gray-200 pb-6 group-hover:border-gold-500 transition-colors">
+                    <h3 className="text-2xl font-serif font-bold text-primary-900 mb-2">{prog.title}</h3>
+                    <p className="text-gray-600 mb-4 text-lg leading-relaxed">{prog.desc}</p>
+                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                      {prog.pm}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-24 bg-primary-900 text-white border-t-4 border-gold-500">
+      <section className="py-24 bg-primary-900 text-white">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-white">
             Bergabunglah Dalam Dakwah

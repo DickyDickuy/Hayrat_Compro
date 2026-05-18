@@ -20,10 +20,9 @@ export default function TentangPage() {
           />
         </div>
         <div className="container-custom text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
+          <h1 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
             Tentang <span className="text-gold-500">Hayrat Indonesia</span>
           </h1>
-          <div className="w-24 h-1 bg-gold-500 mx-auto mb-6"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Yayasan dakwah dan kemanusiaan yang berkomitmen untuk menyebarkan nilai-nilai Islam 
             HAYRAT YARDIM dan membantu mereka yang membutuhkan.
@@ -38,13 +37,12 @@ export default function TentangPage() {
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-6">
               Visi &amp; Misi Kami
             </h2>
-            <div className="w-16 h-1 bg-gold-500 mx-auto"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
             {/* Vision / Goals */}
-            <div className="bg-white border-t-4 border-gold-500 p-10 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-primary-900 flex items-center justify-center mb-8">
+            <div className="bg-white border border-gray-100 rounded-md p-8 md:p-10 shadow-sm transition-shadow">
+              <div className="w-16 h-16 bg-primary-900 flex items-center justify-center mb-6 md:mb-8">
                 <FaEye className="text-gold-500 text-3xl" />
               </div>
               <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
@@ -78,8 +76,8 @@ export default function TentangPage() {
             </div>
 
             {/* Mission */}
-            <div className="bg-white border-t-4 border-primary-900 p-10 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-gold-500 flex items-center justify-center mb-8">
+            <div className="bg-white border border-gray-100 rounded-md p-8 md:p-10 shadow-sm transition-shadow">
+              <div className="w-16 h-16 bg-gold-500 flex items-center justify-center mb-6 md:mb-8">
                 <FaBullseye className="text-white text-3xl" />
               </div>
               <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
@@ -102,7 +100,7 @@ export default function TentangPage() {
                   <li className="flex items-start">
                     <FaCheckCircle className="text-gold-500 mt-1 mr-4 flex-shrink-0" />
                     <span>
-                      <strong>Penerbitan:</strong> Mencetak, menerbitkan, dan mendistribusikan Al-Qur'an bersanad (Tevâfuk) serta buku-buku ilmu pengetahuan, sejarah, dan agama.
+                      <strong>Penerbitan:</strong> Mencetak, menerbitkan, dan mendistribusikan Al-Qur&apos;an bersanad (Tevâfuk) serta buku-buku ilmu pengetahuan, sejarah, dan agama.
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -127,15 +125,14 @@ export default function TentangPage() {
       {/* History Section */}
       <section className="section-padding bg-white border-y border-gray-200">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div className="order-2 md:order-1">
               <div className="w-16 h-16 bg-primary-900 flex items-center justify-center mb-6">
                 <FaHistory className="text-gold-500 text-2xl" />
               </div>
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-6">
                 Sejarah <span className="text-gold-500">Kami</span>
               </h2>
-              <div className="w-16 h-1 bg-gold-500 mb-8"></div>
               <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
                 <p className="text-primary-900 font-semibold">
                   <strong>Jejak Langkah Hayrat Foundation Global dan Indonesia</strong>
@@ -151,14 +148,57 @@ export default function TentangPage() {
                 </p>
               </div>
             </div>
-            <div className="relative h-[600px] bg-gray-100">
+            <div className="relative h-[400px] md:h-[600px] bg-gray-100 order-1 md:order-2">
               <Image
                 src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800"
                 alt="History"
                 fill
-                className="object-cover"
+                className="object-cover rounded-md"
               />
-              <div className="absolute inset-0 border-8 border-white/20"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Legal & Transparansi Section */}
+      <section className="section-padding bg-cream-50 border-b border-gray-200">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-6">
+              Legalitas &amp; Transparansi
+            </h2>
+          </div>
+          
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-16 items-start">
+              <div>
+                <h3 className="text-2xl font-serif font-bold text-primary-900 mb-6">Yayasan Ayasofya Center Indonesia</h3>
+                <p className="text-gray-700 leading-relaxed mb-4 text-lg">
+                  Sebagai lembaga resmi yang mewadahi program kemanusiaan Hayrat Foundation di Indonesia, kami berkomitmen untuk menjaga profesionalitas, akuntabilitas, dan transparansi penuh dalam setiap langkah pengelolaan dana umat (ZISWAF).
+                </p>
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  Kami terdaftar secara sah di bawah Kementerian Hukum dan HAM Republik Indonesia, dan selalu melaporkan setiap kegiatan audit untuk memastikan amanah donatur tersalurkan dengan tepat sasaran.
+                </p>
+              </div>
+              <div className="space-y-8">
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-500 mb-4">Informasi Legalitas</h4>
+                  <ul className="space-y-6">
+                    <li className="flex flex-col border-b border-gray-200 pb-4">
+                      <span className="text-sm text-gray-500 mb-1">Akta Pendirian Yayasan</span>
+                      <span className="text-xl font-serif text-primary-900 font-bold">Terdaftar Kemenkumham RI</span>
+                    </li>
+                    <li className="flex flex-col border-b border-gray-200 pb-4">
+                      <span className="text-sm text-gray-500 mb-1">Nomor SK Kemenkumham</span>
+                      <span className="text-xl font-serif text-primary-900 font-bold">AHU-0015505.AH.01.04.Tahun 2021</span>
+                    </li>
+                    <li className="flex flex-col border-b border-gray-200 pb-4">
+                      <span className="text-sm text-gray-500 mb-1">Kemitraan Amil Zakat</span>
+                      <span className="text-xl font-serif text-primary-900 font-bold">Sinergi bersama BAZNAS RI</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -171,14 +211,13 @@ export default function TentangPage() {
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
               Nilai-Nilai <span className="text-gold-500">Kami</span>
             </h2>
-            <div className="w-16 h-1 bg-gold-500 mx-auto mb-6"></div>
             <p className="text-lg max-w-3xl mx-auto">
               Langkah gerak kami dilandasi oleh semangat Ruhiah, Ilmiah, dan Khidmah, dengan memegang teguh nilai-nilai berikut:
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-6">
-            <div className="border border-primary-800 p-8">
+            <div className="border border-gray-200 bg-gray-50 rounded-md p-8">
               <div className="flex items-start">
                 <FaCheckCircle className="text-gold-500 mt-1 mr-4 flex-shrink-0" />
                 <p className="leading-relaxed text-lg">
@@ -187,7 +226,7 @@ export default function TentangPage() {
               </div>
             </div>
 
-            <div className="border border-primary-800 p-8">
+            <div className="border border-gray-200 bg-gray-50 rounded-md p-8">
               <div className="flex items-start">
                 <FaCheckCircle className="text-gold-500 mt-1 mr-4 flex-shrink-0" />
                 <p className="leading-relaxed text-lg">
@@ -196,7 +235,7 @@ export default function TentangPage() {
               </div>
             </div>
 
-            <div className="border border-primary-800 p-8">
+            <div className="border border-gray-200 bg-gray-50 rounded-md p-8">
               <div className="flex items-start">
                 <FaCheckCircle className="text-gold-500 mt-1 mr-4 flex-shrink-0" />
                 <div className="space-y-5">

@@ -28,11 +28,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? 'bg-primary-900 shadow-xl'
           : 'bg-primary-900/95 backdrop-blur-sm'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -59,7 +58,7 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            
+
             {/* Support Button */}
             <Link
               href="/dukung-kami"
@@ -93,7 +92,7 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              
+
               <Link
                 href="/dukung-kami"
                 className="flex items-center justify-center space-x-2 bg-gold-500 text-white px-6 py-3 rounded-md hover:bg-gold-600 hover:shadow-lg transition-all duration-300 font-semibold mt-2"

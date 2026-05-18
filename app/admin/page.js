@@ -50,7 +50,7 @@ export default function AdminDashboardPage() {
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
-            <div key={index} className="bg-white rounded-xl shadow-md p-6">
+            <div key={index} className="bg-white rounded-md border border-gray-200 shadow-sm p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-lg flex items-center justify-center`}>
                   <Icon className="text-white text-xl" />
@@ -64,26 +64,26 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+      <div className="bg-white rounded-md border border-gray-200 shadow-sm p-6 mb-8">
         <h2 className="text-xl font-serif font-bold text-gray-900 mb-4">
           Quick Actions
         </h2>
         <div className="grid md:grid-cols-3 gap-4">
           <a
             href="/admin/artikel/create"
-            className="bg-gradient-to-r from-primary-700 to-primary-800 text-white px-6 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-center"
+            className="bg-gradient-to-r from-primary-700 to-primary-800 text-white px-6 py-4 rounded-md font-semibold hover:shadow-lg transition-all duration-300 text-center"
           >
             + Artikel Baru
           </a>
           <a
             href="/artikel"
-            className="bg-gray-100 text-gray-700 px-6 py-4 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-300 text-center"
+            className="bg-gray-100 text-gray-700 px-6 py-4 rounded-md font-semibold hover:bg-gray-200 transition-all duration-300 text-center"
           >
             Lihat Website
           </a>
           <a
             href="/admin/pengaturan"
-            className="bg-gray-100 text-gray-700 px-6 py-4 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-300 text-center"
+            className="bg-gray-100 text-gray-700 px-6 py-4 rounded-md font-semibold hover:bg-gray-200 transition-all duration-300 text-center"
           >
             Pengaturan
           </a>
@@ -91,7 +91,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Recent Activity */}
-      <div className="bg-white rounded-xl shadow-md p-6">
+      <div className="bg-white rounded-md border border-gray-200 shadow-sm p-6">
         <h2 className="text-xl font-serif font-bold text-gray-900 mb-4">
           Aktivitas Terbaru
         </h2>

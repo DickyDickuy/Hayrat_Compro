@@ -1,4 +1,4 @@
-import { Inter, Montserrat } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import { AuthProvider } from '@/context/AuthContext';
 import './globals.css';
 
@@ -8,9 +8,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-const montserrat = Montserrat({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  variable: '--font-montserrat',
+  variable: '--font-playfair',
   display: 'swap',
 });
 
@@ -22,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${inter.variable} ${montserrat.variable}`}>
+    <html lang="id" className={`${inter.variable} ${playfair.variable}`}>
       <body className={inter.className}>
         <AuthProvider>
           {children}

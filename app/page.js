@@ -9,16 +9,16 @@ import { FaHeart, FaHandHoldingHeart, FaUsers, FaGraduationCap, FaMicrophone, Fa
 async function getLatestArticles() {
   try {
     // Tentukan URL: Prioritaskan NEXT_PUBLIC_API_URL, lalu VERCEL_URL, lalu fallback ke localhost
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL 
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL
       ? process.env.NEXT_PUBLIC_API_URL
-      : process.env.VERCEL_URL 
-        ? `https://${process.env.VERCEL_URL}` 
+      : process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
         : 'http://localhost:3000';
 
     const res = await fetch(`${baseUrl}/api/articles?limit=3&published=true`, {
       cache: 'no-store',
     });
-    
+
     if (!res.ok) return { articles: [] };
     const data = await res.json();
     return data;
@@ -56,27 +56,27 @@ export default async function HomePage() {
   const { articles } = await getLatestArticles();
 
   const impactStats = [
-    { 
-      icon: FaUsers, 
-      value: '10,000+', 
+    {
+      icon: FaUsers,
+      value: '10,000+',
       label: 'Penerima Manfaat',
       description: 'Telah membantu ribuan individu dan keluarga melalui berbagai program pemberdayaan dan bantuan.'
     },
-    { 
-      icon: FaGraduationCap, 
-      value: '50+', 
+    {
+      icon: FaGraduationCap,
+      value: '50+',
       label: 'Program Pendidikan',
       description: 'Program pendidikan Islam dan umum yang tersebar di berbagai wilayah untuk mencerdaskan umat.'
     },
-    { 
-      icon: FaHandHoldingHeart, 
-      value: '100+', 
+    {
+      icon: FaHandHoldingHeart,
+      value: '100+',
       label: 'Mitra Organisasi',
       description: 'Berkolaborasi dengan berbagai organisasi untuk memperluas jangkauan dan dampak positif.'
     },
-    { 
-      icon: FaHeart, 
-      value: 'Rp 5M+', 
+    {
+      icon: FaHeart,
+      value: 'Rp 5M+',
       label: 'Dana Tersalurkan',
       description: 'Dana yang telah disalurkan untuk berbagai program dakwah dan kemanusiaan secara transparan.'
     },
@@ -85,7 +85,7 @@ export default async function HomePage() {
   return (
     <>
       <Navbar />
-      
+
       {/* Hero Section with Carousel */}
       <HeroCarousel />
 
@@ -93,10 +93,9 @@ export default async function HomePage() {
       <section className="section-padding bg-cream-50">
         <div className="container-custom">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-3">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-4">
               Dampak Kami
             </h2>
-            <div className="w-16 h-1 bg-gold-500 mx-auto mb-4"></div>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Kontribusi nyata Hayrat Indonesia dalam dakwah, pendidikan, dan kemanusiaan.
             </p>
@@ -108,7 +107,7 @@ export default async function HomePage() {
                 <div key={index} className="bg-white border border-gray-100 rounded-lg p-8 text-center hover:shadow-md transition-all duration-300 relative overflow-hidden">
                   {/* Gold top accent */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gold-500"></div>
-                  
+
                   <div className="inline-flex items-center justify-center w-14 h-14 bg-primary-800 rounded-full mb-5">
                     <Icon className="text-white text-xl" />
                   </div>
@@ -124,6 +123,28 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Mitra Kami Section */}
+      <section className="py-16 bg-white border-t border-b border-gray-100">
+        <div className="container-custom">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary-800">
+              Mitra Kami di Indonesia
+            </h2>
+          </div>
+
+          <div className="relative w-full max-w-5xl mx-auto mt-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
+            <Image
+              src="/images/mitra kami di indonesia.png"
+              alt="Mitra Kami di Indonesia"
+              width={1200}
+              height={800}
+              className="object-contain w-full h-auto"
+            />
+          </div>
+
+        </div>
+      </section>
+
       {/* Activity Gallery Section */}
       <ActivityGallery />
 
@@ -132,10 +153,9 @@ export default async function HomePage() {
         <section className="section-padding bg-cream-50">
           <div className="container-custom">
             <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-3">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-800 mb-4">
                 Berita Terbaru
               </h2>
-              <div className="w-16 h-1 bg-gold-500 mx-auto mb-4"></div>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
                 Tetap terupdate dengan kegiatan, acara, dan dampak terbaru kami.
               </p>
@@ -172,7 +192,7 @@ export default async function HomePage() {
                     <p className="text-gray-600 mb-4 line-clamp-3 text-sm leading-relaxed">
                       {article.excerpt}
                     </p>
-                    <Link 
+                    <Link
                       href={`/artikel/${article.slug}`}
                       className="inline-flex items-center text-primary-700 font-semibold text-sm hover:text-gold-600 transition-colors duration-300"
                     >
@@ -185,7 +205,7 @@ export default async function HomePage() {
             </div>
 
             <div className="text-center mt-14">
-              <Link href="/artikel" className="inline-flex items-center space-x-2 bg-white text-primary-700 border-2 border-primary-700 hover:bg-primary-700 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+              <Link href="/artikel" className="inline-flex items-center space-x-2 bg-white text-primary-700 border-2 border-primary-700 hover:bg-primary-700 hover:text-white px-8 py-3 rounded-md font-semibold transition-all duration-300">
                 <span>Lihat Semua Berita</span>
                 <span>→</span>
               </Link>
@@ -205,13 +225,12 @@ export default async function HomePage() {
             className="object-contain object-right"
           />
         </div>
-        
+
         <div className="container-custom relative z-10">
           <div className="text-center mb-14">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-3 text-white">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-white">
               Fokus Dakwah
             </h2>
-            <div className="w-16 h-1 bg-gold-500 mx-auto mb-6"></div>
             <p className="text-lg max-w-3xl mx-auto text-gray-300 leading-relaxed">
               Hayrat Indonesia berkomitmen untuk menyebarkan pemahaman Islam yang HAYRAT YARDIM melalui berbagai inisiatif dakwah digital dan offline yang inkusif dan mencerdaskan.
             </p>
@@ -251,11 +270,11 @@ export default async function HomePage() {
                 <input
                   type="email"
                   placeholder="Alamat email Anda"
-                  className="flex-1 px-5 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-gold-400 focus:outline-none text-sm"
+                  className="flex-1 px-5 py-3 rounded-md bg-white text-gray-900 focus:ring-2 focus:ring-gold-400 focus:outline-none text-sm"
                 />
                 <button
                   type="submit"
-                  className="bg-gold-500 hover:bg-gold-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+                  className="bg-gold-500 hover:bg-gold-600 text-white px-8 py-3 rounded-md font-semibold transition-all duration-300"
                 >
                   Daftar
                 </button>

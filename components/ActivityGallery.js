@@ -1,187 +1,163 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
-import { FaTimes, FaCalendar, FaArrowRight } from 'react-icons/fa';
+import Link from 'next/link';
+import { FaCalendar, FaArrowRight } from 'react-icons/fa';
 
 export default function ActivityGallery() {
   const activities = [
     {
       id: 1,
-      title: 'Ayasofya Dakwah Center',
-      date: 'February 15, 2026',
-      image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800',
-      description: `Pusat yang didedikasikan untuk menyebarkan ilmu dan pertumbuhan spiritual melalui berbagai program pendidikan dan penjangkauan masyarakat.
-
-Ayasofya Dakwah Center menyediakan berbagai program kajian Islam, kelas bahasa Arab, dan studi Al-Quran untuk semua kalangan. Kami berkomitmen untuk menyebarkan pemahaman Islam yang HAYRAT YARDIM.
-
-Dengan fasilitas yang lengkap dan tenaga pengajar yang kompeten, pusat dakwah kami telah melayani ribuan peserta dari berbagai latar belakang. Program kami dirancang untuk membangun karakter dan memperkuat iman.
-
-Bergabunglah dengan kami dalam perjalanan untuk mendalami ilmu agama dan membangun masyarakat yang lebih baik melalui pendidikan Islam yang berkualitas.`,
+      title: 'Ayasofya Dakwah Center (ADC)',
+      date: 'May 10, 2026',
+      image: '/images/Hayrat Indonesia Profile/9589453a-f265-4170-8424-5c8f2bfe9ce8-0000.png',
+      description: `Pusat pembinaan spiritual dan keilmuan yang secara rutin menyelenggarakan kajian komprehensif kitab tafsir Risalah Nur karya Bediuzzaman Said Nursi.\n\nKehadiran ADC bertujuan untuk mengokohkan iman, mencerdaskan pemikiran, serta membangun karakter umat melalui pemahaman Islam yang rahmatan lil 'alamin.`,
+      link: '/program/adc',
     },
     {
       id: 2,
-      title: 'Asrama Mahasiswa',
-      date: 'February 15, 2026',
-      image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800',
-      description: `Menyediakan lingkungan tinggal yang aman, mendukung, dan kondusif bagi siswa untuk fokus pada studi dan pengembangan pribadi mereka.
-
-Asrama mahasiswa kami dilengkapi dengan fasilitas modern termasuk ruang belajar, perpustakaan, akses internet, dan area rekreasi. Kami menciptakan lingkungan yang mendukung prestasi akademik dan pertumbuhan spiritual.
-
-Dengan pengawasan yang baik dan program mentoring, mahasiswa dapat mengembangkan potensi mereka secara maksimal. Kami juga mengadakan kegiatan pengembangan karakter dan soft skills.
-
-Asrama kami bukan hanya tempat tinggal, tetapi juga komunitas yang saling mendukung dalam mencapai kesuksesan akademik dan membangun masa depan yang cerah.`,
+      title: 'Medrese (Pusat Pendidikan Islam)',
+      date: 'May 12, 2026',
+      image: '/images/Hayrat Indonesia Profile/9589453a-f265-4170-8424-5c8f2bfe9ce8-0001.png',
+      description: `Program asrama pendidikan Islam intensif yang mengintegrasikan pembelajaran bahasa Turki gratis dengan kajian keislaman yang mendalam.\n\nDalam lingkungan yang kondusif, mahasiswa dibina untuk memiliki keseimbangan antara keunggulan akademik dan kedalaman spiritual.`,
+      link: '/program/medrese',
     },
     {
       id: 3,
-      title: 'Ayasofya Center Indonesia',
-      date: 'February 15, 2026',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800',
-      description: `Kantor pusat kami untuk bantuan kemanusiaan, mengkoordinasikan upaya bantuan dan proyek kesejahteraan sosial di seluruh negeri.
-
-Ayasofya Center Indonesia berfungsi sebagai hub koordinasi untuk semua program kemanusiaan kami. Dari sini, kami mengelola berbagai inisiatif sosial, pendidikan, dan bantuan kemanusiaan.
-
-Dengan tim profesional yang berdedikasi, kami memastikan setiap program berjalan efektif dan memberikan dampak positif bagi masyarakat. Kami juga menjalin kemitraan dengan berbagai organisasi untuk memperluas jangkauan.
-
-Pusat ini merupakan simbol komitmen kami untuk terus melayani masyarakat dan membangun peradaban yang lebih baik melalui berbagai program kesejahteraan sosial dan pendidikan.`,
+      title: 'Janjiqu (Jago Ngaji Al-Qur\'an)',
+      date: 'May 14, 2026',
+      image: '/images/Hayrat Indonesia Profile/9589453a-f265-4170-8424-5c8f2bfe9ce8-0002.png',
+      description: `Bimbingan baca tulis Al-Qur'an terstruktur (Tahsin & Tahfidz) dari tingkat dasar hingga mahir, dirancang khusus dengan metode pendekatan personal.\n\nSistem 'by Plan' memastikan setiap peserta didik dapat mencapai target hafalan dan perbaikan bacaan dengan optimal.`,
+      link: '/program/janjiqu',
+    },
+    {
+      id: 4,
+      title: 'Ayasofya Scholarship Program (ASP)',
+      date: 'May 15, 2026',
+      image: '/images/Hayrat Indonesia Profile/9589453a-f265-4170-8424-5c8f2bfe9ce8-0003.png',
+      description: `Program beasiswa unggulan yang didedikasikan bagi mahasiswa berprestasi, berfokus pada pengembangan kapasitas diri, kepemimpinan, serta pembinaan spiritual.\n\nPenerima beasiswa mendapatkan berbagai fasilitas pengembangan, termasuk peluang program lanjutan ke Turki.`,
+      link: '/program/asp',
+    },
+    {
+      id: 5,
+      title: 'Ayasofya Center Indonesia (ACI)',
+      date: 'May 18, 2026',
+      image: '/images/Hayrat Indonesia Profile/9589453a-f265-4170-8424-5c8f2bfe9ce8-0004.png',
+      description: `Lembaga kemanusiaan resmi di bawah naungan Hayrat Indonesia yang aktif menyalurkan bantuan sosial, qurban, dan program tanggap bencana.\n\nKami terus berupaya menebar manfaat dan kebaikan ke berbagai pelosok negeri demi kesejahteraan umat.`,
+      link: '/program/aci',
     },
   ];
 
-  const [selectedItem, setSelectedItem] = useState(null);
+  const featured = activities[0];
+  const regular = activities.slice(1);
 
   return (
-    <>
-      {/* Main Section */}
-      <section className="section-padding bg-cream-50">
-        <div className="container-custom">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6 border-b border-gray-200 pb-6">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-4">
-                Kegiatan Kami
-              </h2>
-              <div className="w-16 h-1 bg-gold-500 mb-4"></div>
-              <p className="text-gray-600 max-w-2xl text-lg">Berdedikasi untuk melayani masyarakat melalui pendidikan, dukungan sosial, dan inisiatif kemanusiaan.</p>
-            </div>
-            <button className="inline-flex items-center space-x-3 bg-white text-primary-900 border-2 border-primary-900 hover:bg-primary-900 hover:text-white px-8 py-3 font-bold uppercase tracking-wider text-sm transition-all duration-300 whitespace-nowrap">
-              <span>Pelajari Lebih Lanjut</span>
-              <FaArrowRight />
-            </button>
+    <section className="section-padding bg-cream-50">
+      <div className="container-custom">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6 border-b border-gray-200 pb-6">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">
+              Kegiatan Kami
+            </h2>
+            <p className="text-gray-600 max-w-2xl text-lg leading-relaxed">
+              Berdedikasi untuk melayani masyarakat melalui pendidikan, dukungan sosial, dan inisiatif kemanusiaan.
+            </p>
           </div>
-
-          {/* Grid of Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {activities.map((activity) => (
-              <div
-                key={activity.id}
-                onClick={() => setSelectedItem(activity)}
-                className="group cursor-pointer flex flex-col bg-white border border-gray-200 hover:border-gold-500 transition-all duration-300 h-full"
-              >
-                {/* Image Area */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-primary-900">
-                  <Image
-                    src={activity.image}
-                    alt={activity.title}
-                    fill
-                    className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                  />
-                  
-                  {/* Date Badge - Solid Corporate Style */}
-                  <div className="absolute top-0 right-0 bg-gold-500 text-white px-4 py-2 flex items-center space-x-2">
-                    <FaCalendar className="text-white text-xs" />
-                    <span className="text-xs font-bold uppercase tracking-wider">
-                      {new Date(activity.date).toLocaleDateString('id-ID', { month: 'short', day: 'numeric', year: 'numeric' })}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content Area */}
-                <div className="p-8 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl font-serif font-bold text-primary-900 mb-4 group-hover:text-gold-500 transition-colors">
-                      {activity.title}
-                    </h3>
-                    <p className="text-gray-600 line-clamp-3 text-sm leading-relaxed mb-6">
-                      {activity.description.split('\n')[0]}
-                    </p>
-                  </div>
-                  <div className="mt-auto flex items-center text-primary-900 font-bold uppercase tracking-wider text-xs group-hover:text-gold-500 transition-colors">
-                    <span className="mr-2">Selengkapnya</span>
-                    <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Link href="/aktivitas" className="inline-flex items-center space-x-2 bg-white text-primary-900 border-2 border-primary-900 hover:bg-primary-900 hover:text-white px-6 py-3 font-semibold text-sm transition-all duration-300 rounded-md whitespace-nowrap">
+            <span>Lihat Semua</span>
+            <FaArrowRight />
+          </Link>
         </div>
-      </section>
 
-      {/* Corporate Modal */}
-      {selectedItem && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-primary-900/95 p-4 md:p-10 animate-fadeIn"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setSelectedItem(null);
-          }}
+        {/* Featured Card */}
+        <Link
+          href={featured.link}
+          className="group flex flex-col md:flex-row bg-white border border-gray-100 shadow-sm hover:shadow-2xl hover:border-gold-500 transition-all duration-500 rounded-2xl overflow-hidden mb-12"
         >
-          {/* Close Button */}
-          <button
-            onClick={() => setSelectedItem(null)}
-            className="absolute top-6 right-6 md:top-10 md:right-10 text-white hover:text-gold-500 transition-colors z-50 flex items-center space-x-2"
-            aria-label="Tutup"
-          >
-            <span className="font-bold uppercase tracking-widest text-xs hidden md:block">Tutup</span>
-            <FaTimes className="text-2xl" />
-          </button>
-
-          {/* Modal Container */}
-          <div className="relative w-full max-w-6xl max-h-[90vh] bg-white flex flex-col md:flex-row overflow-hidden shadow-2xl animate-scaleIn">
-            
-            {/* Left Side - Image */}
-            <div className="w-full md:w-1/2 relative bg-gray-100 min-h-[300px] md:min-h-full">
-              <Image
-                src={selectedItem.image}
-                alt={selectedItem.title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 border-8 border-white/20 hidden md:block"></div>
+          {/* Image Area */}
+          <div className="relative w-full md:w-1/2 lg:w-7/12 aspect-video md:aspect-auto min-h-[300px] overflow-hidden bg-gray-50 border-b md:border-b-0 md:border-r border-gray-100">
+            <Image
+              src={featured.image}
+              alt={featured.title}
+              fill
+              className="object-cover opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
+            />
+            <div className="absolute top-6 left-6 bg-primary-900 text-white px-4 py-1.5 rounded shadow-lg">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-400">Program Utama</span>
             </div>
+          </div>
 
-            {/* Right Side - Content */}
-            <div className="w-full md:w-1/2 flex flex-col bg-white h-full max-h-[60vh] md:max-h-[90vh]">
-              {/* Header */}
-              <div className="p-8 lg:p-12 border-b border-gray-100">
-                <div className="flex items-center space-x-2 text-gold-500 font-bold uppercase tracking-widest text-xs mb-4">
-                  <FaCalendar />
-                  <span>{new Date(selectedItem.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          {/* Content Area */}
+          <div className="w-full md:w-1/2 lg:w-5/12 p-8 md:p-10 lg:p-12 flex flex-col justify-center bg-white relative">
+            <div className="flex items-center space-x-2 text-gray-400 mb-4">
+              <FaCalendar className="text-gold-500 text-sm" />
+              <span className="text-xs font-semibold">
+                {new Date(featured.date).toLocaleDateString('id-ID', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-primary-900 mb-4 group-hover:text-gold-600 transition-colors leading-tight">
+              {featured.title}
+            </h3>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 line-clamp-4">
+              {featured.description.split('\n')[0]}
+            </p>
+            <div className="mt-auto">
+              <div className="inline-flex items-center text-primary-900 font-semibold text-sm group-hover:text-gold-600 transition-colors">
+                <span className="mr-2">Pelajari Lebih Lanjut</span>
+                <span className="transform group-hover:translate-x-2 transition-transform duration-300">→</span>
+              </div>
+            </div>
+          </div>
+        </Link>
+
+        {/* Grid of Remaining Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {regular.map((activity) => (
+            <Link
+              key={activity.id}
+              href={activity.link}
+              className="group flex flex-col bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-gold-500 transition-all duration-300 h-full rounded-2xl overflow-hidden"
+            >
+              {/* Image Area */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-50 border-b border-gray-100">
+                <Image
+                  src={activity.image}
+                  alt={activity.title}
+                  fill
+                  className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                />
+                
+                {/* Date Badge */}
+                <div className="absolute top-5 right-5 bg-primary-900/90 backdrop-blur-sm text-white px-3 py-1.5 rounded flex items-center space-x-2 shadow-lg">
+                  <FaCalendar className="text-gold-400 text-xs" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.15em]">
+                    {new Date(activity.date).toLocaleDateString('id-ID', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </span>
                 </div>
-                <h3 className="font-serif font-bold text-3xl md:text-4xl text-primary-900 leading-tight">
-                  {selectedItem.title}
-                </h3>
               </div>
 
-              {/* Body */}
-              <div className="flex-1 overflow-y-auto p-8 lg:p-12 custom-scrollbar">
-                <div className="prose prose-lg max-w-none text-gray-600">
-                  <p className="whitespace-pre-line leading-relaxed">
-                    {selectedItem.description}
+              {/* Content Area */}
+              <div className="p-6 lg:p-8 flex-1 flex flex-col justify-between bg-white">
+                <div className="flex-1 flex flex-col">
+                  <h3 className="text-xl font-bold text-primary-900 mb-3 group-hover:text-gold-600 transition-colors line-clamp-2 min-h-[3.5rem] leading-snug">
+                    {activity.title}
+                  </h3>
+                  <p className="text-gray-600 line-clamp-2 text-sm leading-relaxed mb-6 flex-1 min-h-[3rem]">
+                    {activity.description.split('\n')[0]}
                   </p>
                 </div>
+                <div className="mt-auto pt-4 border-t border-gray-100">
+                  <div className="flex items-center text-primary-900 font-semibold text-xs group-hover:text-gold-600 transition-colors">
+                    <span className="mr-2">Selengkapnya</span>
+                    <span className="transform group-hover:translate-x-2 transition-transform duration-300">→</span>
+                  </div>
+                </div>
               </div>
-
-              {/* Footer */}
-              <div className="p-8 lg:p-12 border-t border-gray-100 bg-gray-50">
-                <button className="w-full bg-primary-900 hover:bg-gold-500 text-white py-4 font-bold uppercase tracking-widest text-sm transition-colors duration-300 flex items-center justify-center space-x-3">
-                  <span>Pelajari Lebih Lanjut</span>
-                  <FaArrowRight />
-                </button>
-              </div>
-            </div>
-          </div>
+            </Link>
+          ))}
         </div>
-      )}
-    </>
+      </div>
+    </section>
   );
 }

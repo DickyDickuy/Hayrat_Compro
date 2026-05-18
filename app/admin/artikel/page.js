@@ -78,7 +78,7 @@ export default function AdminArtikelPage() {
         </div>
         <Link
           href="/admin/artikel/create"
-          className="flex items-center space-x-2 bg-gradient-to-r from-primary-700 to-primary-800 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+          className="flex items-center space-x-2 bg-gradient-to-r from-primary-700 to-primary-800 text-white px-6 py-3 rounded-md font-semibold hover:shadow-lg transition-all duration-300"
         >
           <FaPlus />
           <span>Artikel Baru</span>
@@ -104,7 +104,7 @@ export default function AdminArtikelPage() {
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            className="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           >
             <option value="all">Semua Status</option>
             <option value="published">Published</option>
@@ -159,7 +159,7 @@ export default function AdminArtikelPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      <span className={`px-3 py-1 rounded-md text-xs font-semibold ${
                         article.published
                           ? 'bg-green-100 text-green-800'
                           : 'bg-yellow-100 text-yellow-800'

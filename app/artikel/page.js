@@ -48,12 +48,11 @@ export default async function ArtikelPage({ searchParams }) {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-40 pb-20 bg-primary-900 border-b-4 border-gold-500 relative">
+      <section className="pt-40 pb-20 bg-primary-900 relative">
         <div className="container-custom text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
+          <h1 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
             Artikel & <span className="text-gold-500">Berita</span>
           </h1>
-          <div className="w-24 h-1 bg-gold-500 mx-auto mb-6"></div>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Informasi terbaru, opini, dan laporan mendalam tentang kegiatan kemanusiaan dan dakwah Hayrat Indonesia.
           </p>
@@ -68,11 +67,11 @@ export default async function ArtikelPage({ searchParams }) {
               <a
                 key={category}
                 href={`/artikel${category !== 'Semua' ? `?category=${category}` : ''}`}
-                className={`px-6 py-2.5 font-bold uppercase tracking-wide text-xs transition-colors border ${
+                className={`px-5 py-2 font-medium text-sm transition-colors border rounded-md ${
                   (category === 'Semua' && !searchParams.category) ||
                   searchParams.category === category
-                    ? 'bg-primary-900 border-primary-900 text-white'
-                    : 'bg-white border-gray-300 text-gray-600 hover:border-primary-900 hover:text-primary-900'
+                    ? 'bg-primary-50 border-primary-200 text-primary-900'
+                    : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-800'
                 }`}
               >
                 {category}
@@ -100,10 +99,10 @@ export default async function ArtikelPage({ searchParams }) {
                     <a
                       key={page}
                       href={`/artikel?page=${page}${searchParams.category ? `&category=${searchParams.category}` : ''}`}
-                      className={`w-12 h-12 flex items-center justify-center font-bold transition-colors border ${
+                      className={`w-10 h-10 flex items-center justify-center font-medium transition-colors border rounded-md ${
                         page === pagination.page
-                          ? 'bg-primary-900 border-primary-900 text-white'
-                          : 'bg-white border-gray-300 text-gray-600 hover:border-primary-900 hover:text-primary-900'
+                          ? 'bg-primary-50 border-primary-200 text-primary-900'
+                          : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-800'
                       }`}
                     >
                       {page}
@@ -115,7 +114,6 @@ export default async function ArtikelPage({ searchParams }) {
           ) : (
             <div className="text-center py-20 bg-white border border-gray-200">
               <p className="text-xl text-gray-500 font-serif">Belum ada artikel tersedia dalam kategori ini.</p>
-              <div className="w-16 h-1 bg-gold-500 mx-auto mt-6"></div>
             </div>
           )}
         </div>

@@ -89,7 +89,7 @@ export default async function ArticleDetailPage({ params }) {
 
           {/* Category Badge */}
           <div className="mb-4">
-            <span className="bg-gradient-to-r from-gold-500 to-gold-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg">
+            <span className="bg-gradient-to-r from-gold-500 to-gold-600 text-white text-sm font-semibold px-4 py-1 rounded-md shadow-lg">
               {article.category}
             </span>
           </div>
@@ -141,7 +141,7 @@ export default async function ArticleDetailPage({ params }) {
               {article.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="bg-gold-50 text-gold-700 border border-gold-200 px-3 py-1 rounded-full text-sm hover:bg-gold-100 transition-colors"
+                  className="bg-gold-50 text-gold-700 border border-gold-200 px-3 py-1 rounded-md text-sm hover:bg-gold-100 transition-colors"
                 >
                   {tag}
                 </span>
@@ -154,13 +154,13 @@ export default async function ArticleDetailPage({ params }) {
             <p className="text-gray-600 mb-4">Bagikan artikel ini:</p>
             <div className="flex justify-center gap-4">
               {/* Add social share buttons here */}
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+              <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
                 Facebook
               </button>
-              <button className="bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-sky-600 transition">
+              <button className="bg-sky-500 text-white px-4 py-2 rounded-md hover:bg-sky-600 transition">
                 Twitter
               </button>
-              <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+              <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">
                 WhatsApp
               </button>
             </div>

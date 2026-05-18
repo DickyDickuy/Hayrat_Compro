@@ -133,11 +133,11 @@ export default function CreateArtikelPage() {
         <p className="text-gray-600">Tambahkan artikel atau berita baru</p>
       </div>
 
-      <div className="card shadow-lg bg-white">
-        <div className="card-body space-y-6">
+      <div className="bg-white p-5 md:p-8 lg:p-10 border border-gray-200 rounded-md">
+        <div className="space-y-6">
           {message ? (
             <div
-              className={`alert ${messageType === 'success' ? 'alert-success' : 'alert-error'} shadow`}
+              className={`px-4 py-3 rounded-md text-sm font-medium ${messageType === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}
             >
               <span>{message}</span>
             </div>
@@ -285,12 +285,14 @@ export default function CreateArtikelPage() {
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">Konten</label>
-              <ReactQuill
-                theme="snow"
-                value={formData.content}
-                onChange={handleContentChange}
-                modules={quillModules}
-              />
+              <div className="min-h-[300px]">
+                <ReactQuill
+                  theme="snow"
+                  value={formData.content}
+                  onChange={handleContentChange}
+                  modules={quillModules}
+                />
+              </div>
             </div>
 
             <div className="flex items-center space-x-3">
@@ -305,20 +307,20 @@ export default function CreateArtikelPage() {
               <label htmlFor="published" className="text-sm text-gray-700">Publish artikel sekarang</label>
             </div>
 
-            <div className="flex items-center gap-3 pt-4 border-t">
+            <div className="flex flex-col sm:flex-row items-center gap-3 pt-6 border-t border-gray-100">
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn-primary px-6"
+                className="w-full sm:w-auto bg-primary-900 text-white px-8 py-3 rounded-md font-bold hover:bg-gold-500 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
               >
-                {loading ? 'Menyimpan...' : 'Simpan Artikel'}
+                {loading ? 'MENYIMPAN...' : 'SIMPAN ARTIKEL'}
               </button>
               <button
                 type="button"
                 onClick={() => router.back()}
-                className="btn btn-ghost px-6"
+                className="w-full sm:w-auto bg-white text-gray-600 border border-gray-300 px-8 py-3 rounded-md font-bold hover:bg-gray-50 hover:text-primary-900 transition-colors duration-300 text-sm"
               >
-                Batal
+                BATAL
               </button>
             </div>
           </form>

@@ -40,13 +40,13 @@ export default function HeroCarousel() {
   }, [emblaApi]);
 
   return (
-    <section className="relative pt-20 h-[60vh] md:h-[70vh] grid md:grid-cols-2">
-      {/* Left side - Carousel */}
-      <div className="relative h-full overflow-hidden">
+    <section className="relative min-h-[400px] md:min-h-[500px] flex items-center pt-24 pb-16">
+      {/* Background Carousel */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="embla h-full" ref={emblaRef}>
           <div className="embla__container h-full flex">
             {carouselImages.map((src, index) => (
-              <div key={index} className="embla__slide relative flex-[0_0_100%] min-w-0">
+              <div key={index} className="embla__slide relative flex-[0_0_100%] min-w-0 h-full">
                 <Image
                   src={src}
                   alt={`Hero Image ${index + 1}`}
@@ -59,16 +59,19 @@ export default function HeroCarousel() {
           </div>
         </div>
 
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/70 to-transparent z-10 pointer-events-none"></div>
+
         {/* Navigation Dots */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
           {carouselImages.map((_, index) => (
             <button
               key={index}
               onClick={() => scrollTo(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`h-1.5 rounded-full transition-all duration-300 ${
                 selectedIndex === index
-                  ? 'bg-gold-400 w-8'
-                  : 'bg-white/50 hover:bg-white/75'
+                  ? 'bg-gold-500 w-6'
+                  : 'bg-white/40 w-1.5 hover:bg-white/70'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -76,23 +79,23 @@ export default function HeroCarousel() {
         </div>
       </div>
 
-      {/* Right side - Content */}
-      <div className="bg-gradient-to-br from-primary-800 to-primary-900 flex items-center px-8 lg:px-16 py-12">
-        <div className="max-w-xl">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-4 leading-tight">
-            Pendidikan dan Dakwah<br />
-            <span className="text-gold-400">HAYRAT FOUNDATION</span>
+      {/* Content over background */}
+      <div className="container-custom relative z-20 w-full py-6">
+        <div className="max-w-xl text-white">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 leading-tight">
+            Pendidikan & Dakwah<br />
+            <span className="text-gold-500 font-serif">HAYRAT FOUNDATION</span>
           </h1>
-          <p className="text-base md:text-lg mb-6 text-gray-200 leading-relaxed">
+          <p className="text-xs md:text-sm mb-6 text-gray-200 leading-relaxed max-w-lg hidden sm:block">
             Bersama menyebarkan nilai-nilai Islam dan membangun masa depan yang lebih baik melalui program-program dakwah dan kemanusiaan yang berkelanjutan.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/dukung-kami" className="btn-gold inline-flex items-center justify-center space-x-2">
+          <div className="flex flex-row flex-wrap gap-3 mt-4 sm:mt-0">
+            <Link href="/dukung-kami" className="bg-gold-500 hover:bg-gold-600 text-primary-900 px-4 py-2 sm:px-6 sm:py-2.5 rounded-md font-bold transition-all duration-300 inline-flex items-center justify-center space-x-2 text-xs sm:text-sm shadow-sm">
               <FaHeart />
               <span>Dukung Kami</span>
             </Link>
-            <Link href="/tentang" className="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white/20 transition-all duration-300 inline-flex items-center justify-center">
-              Pelajari Lebih Lanjut
+            <Link href="/tentang" className="bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-md font-bold transition-all duration-300 inline-flex items-center justify-center text-xs sm:text-sm shadow-sm">
+              Pelajari Lanjut
             </Link>
           </div>
         </div>
