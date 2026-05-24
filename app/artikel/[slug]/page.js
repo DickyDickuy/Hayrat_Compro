@@ -18,7 +18,12 @@ function getApiBaseUrl() {
 }
 
 function resolveImage(src) {
-  if (!src) return '/images/default-article.jpg';
+  const fallback = '/images/calligraphy.png';
+
+  if (!src || typeof src !== 'string') return fallback;
+
+  // Allow local public/ images (works in Vercel/Linux too)
+  if (src.startsWith('/')) return src;
 
   const allowedHosts = new Set([
     'localhost',
@@ -34,9 +39,9 @@ function resolveImage(src) {
         allowedSuffixes.some((suffix) => url.hostname.endsWith(suffix)));
 
     if (isAllowed) return src;
-    return '/images/default-article.jpg';
+    return fallback;
   } catch {
-    return '/images/default-article.jpg';
+    return fallback;
   }
 }
 

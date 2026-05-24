@@ -27,7 +27,7 @@ const ArticleSchema = new mongoose.Schema({
   },
   coverImage: {
     type: String,
-    default: '/images/default-article.jpg',
+    default: '/images/calligraphy.png',
   },
   author: {
     type: String,

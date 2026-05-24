@@ -38,7 +38,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/images/LOGO hayrat.png"
+              src="/images/hayrat-logo.png"
               alt="Hayrat Indonesia"
               width={180}
               height={60}
