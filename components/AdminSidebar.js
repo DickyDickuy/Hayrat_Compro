@@ -35,7 +35,7 @@ export default function AdminSidebar() {
         {/* Logo */}
         <Link href="/admin" className="flex items-center justify-center mb-8">
           <Image
-            src="/images/hayrat-logo.png"
+            src="/images/LOGO_Hayrat.png"
             alt="Hayrat Indonesia"
             width={180}
             height={60}
